@@ -15,7 +15,7 @@ const Landing = () => {
 
   return (
     <main className="landing-container">
-      <NavBar />
+      {/* <NavBar /> we have 2 navs showing up*/} 
 
       {/* adds banner from the assetss folder */}
       <video className="video-banner" autoPlay muted loop>
