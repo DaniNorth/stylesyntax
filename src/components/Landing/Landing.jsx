@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
-import NavBar from '../NavBar/NavBar';
 import './Landing.css';
 
 const Landing = () => {
@@ -15,20 +14,21 @@ const Landing = () => {
 
   return (
     <main className="landing-container">
-      <NavBar />
 
       {/* adds banner from the assetss folder */}
-      <video className="video-banner" autoPlay muted loop>
-        <source src="/assets/BannerLanding.mp4" type="video/mp4" />
+      <video className="video-banner" autoPlay muted loop playsInline>
+        <source src="./src/assets/LandingBanner.mp4" type="video/mp4" />
       </video>
 
       {/* easy scroll button*/}
-      <div className="arrow-down" onClick={handleScroll}>▼</div>
+      <div className="arrow-down" onClick={handleScroll} aria-label="Scroll to next section">
+        ▼
+      </div>
 
       {/* Placeholder text build out later */}
       <section id="next-section" className="section">
-        <h1>Welcome to StyleSyntax</h1>
-        <p>Your personalized style journey starts here.</p>
+        <h1 className="hero-title">Welcome to <span>StyleSyntax</span></h1>
+        <p className="hero-subtitle">Your personalized style journey starts here.</p>
 
         {/* Wait for Randall to build out profile and link */}
         {user ? (
@@ -36,16 +36,41 @@ const Landing = () => {
             Go to Profile
           </button>
         ) : (
-          <>
-            <Link to="/sign-in" className="get-started-btn" style={{ marginRight: '1rem' }}>
-              Sign In
-            </Link>
-            <Link to="/sign-up" className="get-started-btn">
-              Sign Up
-            </Link>
-          </>
+          <div className="btn-group">
+            <Link to="/sign-in" className="get-started-btn">Sign In</Link>
+            <Link to="/sign-up" className="get-started-btn">Sign Up</Link>
+          </div>
         )}
       </section>
+      <section className="features-section">
+        <h2 className="section-title">Why Choose StyleSyntax?</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <h3>Tailored Recommendations</h3>
+            <p>Discover fashion that speaks to your personality, body, and vibe. Create a 100% free account for full access.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Style Insights</h3>
+            <p>A currated expeirence from real stylists enhanced with on-demand AI-driven suggestions.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Save & Share</h3>
+            <p>Create your lookbook lists, comment on your favorite styles, and connect with friends.</p>
+          </div>
+        </div>
+      </section>
+
+    <section className="testimonials-section">
+      <h2 className="section-title">What Our Users Say</h2>
+      <div className="testimonial">
+        <p>“StyleSyntax completely transformed how I shop. It's like having a stylist in my pocket!”</p>
+        <span>– Jamie L.</span>
+      </div>
+      <div className="testimonial">
+        <p>“It’s smart, fun, and finally gets my style.”</p>
+        <span>– River M.</span>
+      </div>
+    </section>
     </main>
   );
 };
