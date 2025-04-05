@@ -6,50 +6,50 @@ import Landing from './components/Landing/Landing';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 import Dashboard from './components/Dashboard/Dashboard';
-import HootList from './components/HootList/HootList';
-import HootDetails from './components/HootDetails/HootDetails';
-import HootForm from './components/HootForm/HootForm';
+import OutfitForm from './components/OutfitForm/OutfitForm';
+import OutfitList from './components/OutfitList/OutfitList';
+import OutfitDetails from './components/OutfitDetails/OutfitDetails';
 
 import Background from './components/Background/Background';
 import { UserContext } from './contexts/UserContext';
 
-import * as hootService from './services/hootService';
+import * as outfitService from './services/outfitService';
 
 const App = () => {
   const { user } = useContext(UserContext);
-  const [hoots, setHoots] = useState([]);
+  const [outfits, setOutfits] = useState([]);
   const navigate = useNavigate();
 
-  const handleAddHoot = async (hootFormData) => {
-    const newHoot = await hootService.create(hootFormData);
-    setHoots([newHoot, ...hoots]); // updating state in asc order
-    navigate('/hoots');
+  const handleAddOutfit = async (outfitFormData) => {
+    const newOufit = await outfitService.create(outfitFormData);
+    setOutfits([newOutfit, ...outfits]); // updating state in asc order
+    navigate('/outfits');
   };
 
-  const handleDeleteHoot = async (hootId) => {
-    const deletedHoot = await hootService.deleteHoot(hootId);
-    setHoots(hoots.filter((hoot) => hoot._id !== deletedHoot._id));
-    navigate('/hoots');
+  const handleDeleteOutfit = async (updatedID) => {
+    const deletedOutfit = await outfitService.deleteOutfit(updatedID);
+    setOutfits(outfits.filter((outfit) => outfit._id !== deletedOutfit._id));
+    navigate('/outfits');
   };
 
-  const handleUpdateHoot = async (hootId, hootFormData) => {
-    const updatedHoot = await hootService.updateHoot(hootId, hootFormData);
-    setHoots(hoots.map((hoot) => (
-      hootId ===  hoot._id ? updatedHoot : hoot
+  const handleUpdateOutfit = async (updatedID, outfitFormData) => {
+    const updatedOutfit = await outfitService.updateOutfit(updatedID, outfitFormData);
+    setOutfits(outfits.map((outfit) => (
+      updatedID ===  outfit._id ? updatedOutfit : outfit
     ))); // using .map for this helps preserve order when updating state
 
-    navigate(`/hoots/${hootId}`);
+    navigate(`/outfits/${updatedID}`);
   };
 
   useEffect(() => {
-    const fetchAllHoots = async () => {
-      const hootsData = await hootService.index();
+    const fetchAllOutfits = async () => {
+      const outfitsData = await outfitService.index();
 
-      setHoots(hootsData); // setting hoots state
+      setOutfits(outfitsData); // setting outfits state
     }; 
 
-    if(user) fetchAllHoots(); 
-    // ^ only fetch hoots when a user is logged in
+    if(user) fetchAllOutfits(); 
+    // ^ only fetch outfits when a user is logged in
   }, [user]); // adding user dependency
   // because the effect depends on the user to run
 
@@ -63,27 +63,27 @@ const App = () => {
           user ? (
             <>
               <Route 
-                path="/hoots" 
+                path="/outfits" 
                 element={
-                  <HootList hoots={hoots} />
+                  <outfitList outfits={outfits} />
                 } 
               />
               <Route 
-                path="/hoots/new" 
+                path="/outfits/new" 
                 element={
-                  <HootForm handleAddHoot={handleAddHoot} />
+                  <outfitForm handleAddOutfit={handleAddOutfit} />
                 } 
               />
               <Route 
-                path="/hoots/:hootId" 
+                path="/outfits/:updatedID" 
                 element={
-                  <HootDetails handleDeleteHoot={handleDeleteHoot} />
+                  <outfitDetails handleDeleteOutfit={handleDeleteOutfit} />
                 } 
               />
               <Route 
-                path="/hoots/:hootId/edit" 
+                path="/outfits/:updatedID/edit" 
                 element={
-                  <HootForm handleUpdateHoot={handleUpdateHoot} />
+                  <outfitForm handleUpdateOutfit={handleUpdateOutfit} />
                 } 
               />
             </>

@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/hoots`;
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/outfits`;
 
 const index = async () => {
     try {
@@ -13,9 +13,9 @@ const index = async () => {
     }
 }
 
-const show = async (hootId) => {
+const show = async (updatedID) => {
     try {
-        const res = await fetch(`${BASE_URL}/${hootId}`, {
+        const res = await fetch(`${BASE_URL}/${updatedID}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -27,7 +27,7 @@ const show = async (hootId) => {
     }
 };
 
-const create = async (hootFormData) => {
+const create = async (outfitFormData) => {
     try {
         const res = await fetch(BASE_URL, {
             method: 'POST',
@@ -35,7 +35,7 @@ const create = async (hootFormData) => {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(hootFormData)
+            body: JSON.stringify(outfitFormData)
         });
         return res.json();
     } catch (error) {
@@ -43,9 +43,9 @@ const create = async (hootFormData) => {
     }
 };
 
-const createComment = async (hootId, commentFormData) => {
+const createComment = async (updatedID, commentFormData) => {
     try {
-        const res = await fetch(`${BASE_URL}/${hootId}/comments`, {
+        const res = await fetch(`${BASE_URL}/${updatedID}/comments`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -59,9 +59,9 @@ const createComment = async (hootId, commentFormData) => {
     }
 };
 
-const deleteHoot = async (hootId) => {
+const deleteOutfit = async (updatedID) => {
     try {
-        const res = await fetch(`${BASE_URL}/${hootId}`, {
+        const res = await fetch(`${BASE_URL}/${updatedID}`, {
             method: 'DELETE',
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -73,15 +73,15 @@ const deleteHoot = async (hootId) => {
     }
 };
 
-const updateHoot = async (hootId, hootFormData) => {
+const updateOutfit = async (updatedID, outfitFormData) => {
     try {
-        const res = await fetch(`${BASE_URL}/${hootId}`, {
+        const res = await fetch(`${BASE_URL}/${updatedID}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(hootFormData)
+            body: JSON.stringify(outfitFormData)
         });
         return res.json();
     } catch (error) {
@@ -96,6 +96,6 @@ export {
     show, 
     create, 
     createComment,
-    deleteHoot,
-    updateHoot 
+    deleteOutfit,
+    updateOutfit 
 }; // named export syntax (used to export multiple function from a module)
