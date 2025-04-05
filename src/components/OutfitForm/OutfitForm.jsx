@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import * as hootService from '../../services/hootService';
+import * as outfitService from '../../services/outfitService';
 
-const HootForm = (props) => {
-    const { hootId } = useParams();
+const OutfitForm = (props) => {
+    const { updatedID } = useParams();
 
     const [formData, setFormData] = useState({
         title: '',  
@@ -20,21 +20,21 @@ const HootForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        if(hootId) {
-            props.handleUpdateHoot(hootId, formData);
+        if(updatedID) {
+            props.handleUpdateOutfit(updatedID, formData);
         } else {
-            props.handleAddHoot(formData);
+            props.handleAddOutfit(formData);
         }
     };
 
     useEffect(() => {
-       const fetchHoot = async () => {
-            const hootData = await hootService.show(hootId);
-            setFormData(hootData); // fill out form with hoot details
-            // so we can edit the hoot
+       const fetchOutfit = async () => {
+            const outfitData = await outfitService.show(updatedID);
+            setFormData(outfitData); // fill out form with outfit details
+            // so we can edit the outfit
        } 
 
-       if(hootId) fetchHoot();
+       if(updatedID) fetchOutfit();
 
        return () => { // cleanup function
             setFormData({
@@ -43,11 +43,11 @@ const HootForm = (props) => {
                 category: 'News',  
             });
        }
-    }, [hootId]); // only set form state to the hoot when editing
+    }, [updatedID]); // only set form state to the outfit when editing
 
     return (
         <main>
-            <h1>{hootId ? 'Edit Hoot' : 'New Hoot'}</h1>
+            <h1>{updatedID ? 'Edit outfit' : 'New outfit'}</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="title-input">Title</label>
                 <input
@@ -88,4 +88,4 @@ const HootForm = (props) => {
     );
 }
 
-export default HootForm;
+export default OutfitForm;
