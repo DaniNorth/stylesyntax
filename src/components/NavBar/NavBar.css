@@ -1,3 +1,18 @@
+:root {
+    --lavender-deep: #928fa3;
+    --lavender-soft: #a19db3;
+    --lavender-muted: #b2aec1;
+    --lavender-light: #c2bfcf;
+    --dusty-pink: #ded4d6;
+    --dusty-cream: #f3eaec;
+    --grey-cream: #f5f5f5;
+    --clay-rose: #d3c1b5;
+    --sage-muted: #adbcb5;
+    --sage-soft: #98a9a2;
+    --sage: #83968e;
+    --sage-dark: #7c8b84;
+}
+
 /* NavBar.css */
 .nav-container {
     width: 100vw;
@@ -8,9 +23,11 @@
 }
 
 nav {
-    background-color: #ffffff;
-    border-bottom: 1px solid #CAC8CC;
-    box-shadow: 0 4px 6px rgba(91, 85, 96, 0.05);
+    background-color: var(--grey-cream);
+    border-bottom: 1px solid var(--sage-dark);
+    /* #b2aec1 */
+    box-shadow: 0 4px 6px rgba(146, 143, 163, 0.05);
+    /* lavender-deep tint */
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
@@ -27,7 +44,8 @@ nav ul {
 
 nav li a {
     text-decoration: none;
-    color: #443E4B;
+    color: var(--sage-dark);
+    /* #7c8b84 */
     font-weight: 500;
     font-size: 1rem;
     position: relative;
@@ -42,12 +60,14 @@ nav li a::after {
     bottom: 0;
     width: 0%;
     height: 2px;
-    background-color: #78AE9A;
+    background-color: var(--sage-soft);
+    /* #98a9a2 */
     transition: width 0.3s ease;
 }
 
 nav li a:hover {
-    color: #5B5560;
+    color: var(--sage);
+    /* #83968e */
 }
 
 nav li a:hover::after {
