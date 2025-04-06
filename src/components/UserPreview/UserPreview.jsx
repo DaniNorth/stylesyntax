@@ -1,9 +1,4 @@
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
-import { userService } from "../../services/userService";
-=======
-
->>>>>>> 2e3a0914d8c32ff4194296889a59062527e1fece
 import * as userService from '../../services/userService';
 
 
