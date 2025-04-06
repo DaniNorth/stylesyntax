@@ -23,7 +23,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const handleAddOutfit = async (outfitFormData) => {
-    const newOufit = await outfitService.create(outfitFormData);
+    const newOutfit = await outfitService.create(outfitFormData);
     setOutfits([newOutfit, ...outfits]); // updating state in asc order
     navigate('/outfits');
   };
@@ -47,7 +47,7 @@ const App = () => {
     const fetchAllOutfits = async () => {
       const outfitsData = await outfitService.index();
 
-      setOutfits(outfitsData); // setting outfits state
+      setOutfits(outfitsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
     }; 
 
     if(user) fetchAllOutfits(); 
