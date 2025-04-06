@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-// import { index } from "../"
+
+import * as userService from '../../services/userService';
+
 
 const UserPreview = () => {
   return (

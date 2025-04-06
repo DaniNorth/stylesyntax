@@ -1,5 +1,5 @@
 import './Footer.css';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
