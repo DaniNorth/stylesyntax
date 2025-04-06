@@ -10,6 +10,7 @@ import OutfitForm from './components/OutfitForm/OutfitForm';
 import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
 import Footer from './components/Footer/Footer';
+import UserPreview from './components/UserPreview/UserPreview'
 
 import Background from './components/Background/Background';
 import { UserContext } from './contexts/UserContext';
