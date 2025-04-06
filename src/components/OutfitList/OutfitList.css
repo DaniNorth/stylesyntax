@@ -1,0 +1,7 @@
+.outfit-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    justify-items: center;
+  }
