@@ -2,90 +2,181 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as outfitService from '../../services/outfitService';
 
+
 const OutfitForm = (props) => {
     const { updatedID } = useParams();
 
     const [formData, setFormData] = useState({
-        title: '',  
-        text: '',  
-        category: 'News',  
+        title: '',
+        description: '',
+        styleProfile: '',
+        lifestyleTags: [],
+        season: '',
+        climateFit: '',
+        fitPreference: '',
+        genderCategory: '',
     });
 
+    const [image, setImage] = useState(null);
+
+    const [imagePreview, setImagePreview] = useState(null);
+  
+
     const handleChange = (evt) => {
-        setFormData({
-            ...formData, 
-            [evt.target.name]: evt.target.value
-        });
+        const { name, value, type, checked } = evt.target;
+
+        if (type === 'checkbox') {
+        const newTags = checked
+            ? [...formData.lifestyleTags, value]
+            : formData.lifestyleTags.filter((tag) => tag !== value);
+            setFormData((prev) => ({ ...prev, lifestyleTags: newTags }));
+        } else {
+          setFormData((prev) => ({ ...prev, [name]: value }));
+        }
     };
 
-    const handleSubmit = (evt) => {
+      const handleFileChange = (evt) => {
+        const file = evt.target.files[0];
+        setImage(file);
+        if (file) {
+          const previewURL = URL.createObjectURL(file);
+          setImagePreview(previewURL);
+        }
+    };
+
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
-        if(updatedID) {
-            props.handleUpdateOutfit(updatedID, formData);
+        const submissionData = new FormData();
+        Object.entries(formData).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+            value.forEach((val) => submissionData.append(key, val));
         } else {
-            props.handleAddOutfit(formData);
+            submissionData.append(key, value);
+        }
+        });
+        if (image) submissionData.append('image', image);
+
+        if (updatedID) {
+        props.handleUpdateOutfit(updatedID, submissionData);
+        } else {
+        props.handleAddOutfit(submissionData);
         }
     };
 
     useEffect(() => {
-       const fetchOutfit = async () => {
-            const outfitData = await outfitService.show(updatedID);
-            setFormData(outfitData); // fill out form with outfit details
-            // so we can edit the outfit
-       } 
+        const fetchOutfit = async () => {
+          const outfitData = await outfitService.show(updatedID);
+          setFormData(outfitData);
+      
+          if (outfitData.imageId) {
+            setImagePreview(`${import.meta.env.VITE_BACKEND_URL}/api/outfits/images/${outfitData.imageId}`);
+          }
+        };
+      
+        if (updatedID) fetchOutfit();
+    }, [updatedID]);
 
-       if(updatedID) fetchOutfit();
-
-       return () => { // cleanup function
-            setFormData({
-                title: '',  
-                text: '',  
-                category: 'News',  
-            });
-       }
-    }, [updatedID]); // only set form state to the outfit when editing
-
+    useEffect(() => {
+        return () => {
+          if (imagePreview?.startsWith('blob:')) {
+            URL.revokeObjectURL(imagePreview);
+          }
+        };
+    }, [imagePreview]);
+      
     return (
         <main>
             <h1>{updatedID ? 'Edit outfit' : 'New outfit'}</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title-input">Title</label>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <label htmlFor="title">Title</label>
                 <input
-                    required 
-                    type="text"
-                    name="title"
-                    id="title-input"
-                    value={formData.title}
-                    onChange={handleChange} 
+                required
+                type="text"
+                name="title"
+                id="title"
+                value={formData.title}
+                onChange={handleChange}
                 />
-                <label htmlFor="text-input">Text</label>
+
+                <label htmlFor="description">Description</label>
                 <textarea
-                    required 
-                    type="text"
-                    name="text" 
-                    id="text-input"
-                    value={formData.text}
-                    onChange={handleChange} 
+                name="description"
+                id="description"
+                value={formData.description}
+                onChange={handleChange}
                 />
-                <label htmlFor="category-input">Category</label>
-                <select
-                    required 
-                    name="category" 
-                    id="category-input"
-                    value={formData.category}
-                    onChange={handleChange}
-                >
-                    <option value="News">News</option>
-                    <option value="Games">Games</option>
-                    <option value="Music">Music</option>
-                    <option value="Movies">Movies</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Television">Television</option>
+
+                <label htmlFor="styleProfile">Style Profile</label>
+                <select name="styleProfile" id="styleProfile" value={formData.styleProfile} onChange={handleChange}>
+                <option value="">Select one</option>
+                {['Boho', 'Minimalist', 'Grunge', 'Preppy', 'Streetwear', 'Classic', 'Casual', 'Y2K', 'Chic', 'Other'].map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                ))}
                 </select>
-                <button type="submit">SUBMIT</button>
+
+                <fieldset>
+                <legend>Lifestyle Tags</legend>
+                {['Athletic', 'Professional', 'Casual', 'Event-ready', 'Outdoorsy', 'Loungewear'].map(tag => (
+                    <label key={tag}>
+                    <input
+                        type="checkbox"
+                        name="lifestyleTags"
+                        value={tag}
+                        checked={formData.lifestyleTags.includes(tag)}
+                        onChange={handleChange}
+                    />
+                    {tag}
+                    </label>
+                ))}
+                </fieldset>
+
+                <label htmlFor="season">Season</label>
+                <select name="season" id="season" value={formData.season} onChange={handleChange}>
+                <option value="">Select one</option>
+                {['Winter', 'Spring', 'Summer', 'Fall'].map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                ))}
+                </select>
+
+                <label htmlFor="climateFit">Climate Fit</label>
+                <select name="climateFit" id="climateFit" value={formData.climateFit} onChange={handleChange}>
+                <option value="">Select one</option>
+                {['Tropical', 'Temperate', 'Cold', 'Dry', 'Humid'].map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                ))}
+                </select>
+
+                <label htmlFor="fitPreference">Fit Preference</label>
+                <select name="fitPreference" id="fitPreference" value={formData.fitPreference} onChange={handleChange}>
+                <option value="">Select one</option>
+                {['Fitted', 'Relaxed', 'Oversized'].map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                ))}
+                </select>
+
+                <label htmlFor="genderCategory">Gender Category</label>
+                <select name="genderCategory" id="genderCategory" value={formData.genderCategory} onChange={handleChange}>
+                <option value="">Select one</option>
+                {['Male', 'Female', 'Nonbinary', 'Unisex'].map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                ))}
+                </select>
+                {imagePreview && (
+                    <div style={{ marginBottom: '1rem' }}>
+                        <img
+                        src={imagePreview}
+                        alt="Preview"
+                        style={{ maxWidth: '300px', borderRadius: '8px', objectFit: 'cover' }}
+                        />
+                    </div>
+                    )}
+                <label htmlFor="image">Upload Image</label>
+                <input type="file" name="image" id="image" accept="image/*" onChange={handleFileChange} />
+
+                <button type="submit">Submit</button>
             </form>
         </main>
-    );
-}
+        );
+    };
 
 export default OutfitForm;
