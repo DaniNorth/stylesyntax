@@ -5,11 +5,11 @@ import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
-import UserList from './components/UserList/UserList';
-import OutfitForm from './components/OutfitForm/OutfitForm';
-import OutfitList from './components/OutfitList/OutfitList';
-import OutfitDetails from './components/OutfitDetails/OutfitDetails';
-import Footer from './components/Footer/Footer';
+import Dashboard from './components/Dashboard/Dashboard';
+import HootList from './components/HootList/HootList';
+import HootDetails from './components/HootDetails/HootDetails';
+import HootForm from './components/HootForm/HootForm';
+import UserPreview from './components/UserPreview/UserPreview'
 
 import Background from './components/Background/Background';
 import { UserContext } from './contexts/UserContext';
@@ -59,6 +59,7 @@ const App = () => {
      <Background />
       <NavBar/>
       <Routes>
+       main
         <Route path="/" element={user ? <UserList /> : <Landing />} />
         <Route path="/home" element={<Landing />} />
         {
