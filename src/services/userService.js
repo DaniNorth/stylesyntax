@@ -19,7 +19,7 @@ const index = async () => {
   }
 };
 
-const show = async (userId) => {
+const getUserById = async (userId) => {
   try {
     const res = await fetch(`${BASE_URL}/${userId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
@@ -41,5 +41,5 @@ const show = async (userId) => {
 
 export {
   index,
-  show,
+  getUserById,
 };
