@@ -11,11 +11,11 @@ import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
 import Footer from './components/Footer/Footer';
 import UserPreview from './components/UserPreview/UserPreview'
-
 import Background from './components/Background/Background';
 import { UserContext } from './contexts/UserContext';
 
 import * as outfitService from './services/outfitService';
+import UserProfile from './components/UserProfile/UserProfile';
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -71,6 +71,8 @@ const App = () => {
                 <Route path="/outfits/:updatedID" element={<OutfitDetails handleDeleteOutfit={handleDeleteOutfit} />} />
                 <Route path="/outfits/:updatedID/edit" element={<OutfitForm handleUpdateOutfit={handleUpdateOutfit} />} />
                 <Route path="/userList" element={<UserList />} />
+                <Route path="/profile" element={<UserProfile />} />
+
               </>
             ) : (
               <>
