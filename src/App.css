@@ -1,10 +1,26 @@
 @import './styles/variables.css';
 
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
 
 /* Reset default spacing */
 body,
 html {
+    height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-wrap {
+    flex: 1;
 }
