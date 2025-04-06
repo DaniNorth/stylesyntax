@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { index } from "../"
+// import { index } from "../"
 
 const UserPreview = () => {
   return (
