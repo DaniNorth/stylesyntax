@@ -1,11 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import * as outfitService from '../../services/outfitService';
+import './OutfitForm.css';
+
+
 
 
 const OutfitForm = (props) => {
     const { updatedID } = useParams();
 
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
+    
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -47,31 +54,44 @@ const OutfitForm = (props) => {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         const submissionData = new FormData();
+      
         Object.entries(formData).forEach(([key, value]) => {
-        if (Array.isArray(value)) {
+          if (Array.isArray(value)) {
             value.forEach((val) => submissionData.append(key, val));
-        } else {
+          } else {
             submissionData.append(key, value);
-        }
+          }
         });
         if (image) submissionData.append('image', image);
-
-        if (updatedID) {
-        props.handleUpdateOutfit(updatedID, submissionData);
-        } else {
-        props.handleAddOutfit(submissionData);
-        }
-    };
-
-    useEffect(() => {
-        const fetchOutfit = async () => {
-          const outfitData = await outfitService.show(updatedID);
-          setFormData(outfitData);
       
-          if (outfitData.imageId) {
-            setImagePreview(`${import.meta.env.VITE_BACKEND_URL}/api/outfits/images/${outfitData.imageId}`);
+        try {
+            if (updatedID) {
+              await props.handleUpdateOutfit(updatedID, submissionData);
+            } else {
+              await props.handleAddOutfit(submissionData);
+            }
+          
+            setErrorMessage(''); // clear any previous errors
+            navigate('/outfits'); 
+          } catch (error) {
+            console.error(error);
+          
+            if (error.response?.data?.error) {
+              setErrorMessage(error.response.data.error); // from server
+            } else {
+              setErrorMessage('Something went wrong while saving the outfit.');
+            }
           }
         };
+        useEffect(() => {
+            const fetchOutfit = async () => {
+              const outfitData = await outfitService.show(updatedID);
+              setFormData(outfitData);
+        
+              if (outfitData.imageUrl) {
+                setImagePreview(outfitData.imageUrl);
+              }
+            };
       
         if (updatedID) fetchOutfit();
     }, [updatedID]);
@@ -82,7 +102,7 @@ const OutfitForm = (props) => {
             URL.revokeObjectURL(imagePreview);
           }
         };
-    }, [imagePreview]);
+      }, [imagePreview]);
       
     return (
         <main>
@@ -162,17 +182,18 @@ const OutfitForm = (props) => {
                 ))}
                 </select>
                 {imagePreview && (
-                    <div style={{ marginBottom: '1rem' }}>
-                        <img
-                        src={imagePreview}
-                        alt="Preview"
-                        style={{ maxWidth: '300px', borderRadius: '8px', objectFit: 'cover' }}
-                        />
+                    <div className="image-preview">
+                        <img src={imagePreview} alt="Preview" />
                     </div>
-                    )}
+                )}
                 <label htmlFor="image">Upload Image</label>
                 <input type="file" name="image" id="image" accept="image/*" onChange={handleFileChange} />
 
+                {errorMessage && (
+                    <p style={{ color: 'red', marginBottom: '1rem' }}>
+                        {errorMessage}
+                    </p>
+                )}
                 <button type="submit">Submit</button>
             </form>
         </main>
