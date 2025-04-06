@@ -13,7 +13,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   
   const handleHomeClick = () => {
-    navigate('/');
+    navigate('/landing');
   }
   const handleSignOut = () => {
     localStorage.removeItem('token');
