@@ -1,0 +1,9 @@
+.image-preview {
+    margin-bottom: 1rem;
+  }
+  
+  .image-preview img {
+    max-width: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
