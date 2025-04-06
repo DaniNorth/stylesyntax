@@ -1,4 +1,5 @@
-
+import { useState, useEffect } from "react";
+import { index } from "../"
 
 const UserPreview = () => {
   return (

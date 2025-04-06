@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import HootList from './components/HootList/HootList';
 import HootDetails from './components/HootDetails/HootDetails';
 import HootForm from './components/HootForm/HootForm';
+import UserPreview from './components/UserPreview/UserPreview'
 
 import Background from './components/Background/Background';
 import { UserContext } from './contexts/UserContext';
@@ -59,6 +60,8 @@ const App = () => {
       <NavBar/>
       <Routes>
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+        {/* will change path after user profile is ready */}
+        <Route path='/user-preview' element={<UserPreview />} />
         {
           user ? (
             <>
