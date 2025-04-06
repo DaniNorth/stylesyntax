@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate  } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
-// import logo from '../../assets/logo.svg'
 import './NavBar.css'
 
 // import Home from './pages/Home';
@@ -11,7 +10,11 @@ import './NavBar.css'
 
 const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
-
+  const navigate = useNavigate();
+  
+  const handleHomeClick = () => {
+    navigate('/');
+  }
   const handleSignOut = () => {
     localStorage.removeItem('token');
     setUser(null);
@@ -19,28 +22,29 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div className="nav-container">
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/quiz">Style Quiz</Link></li>
-          <li><Link to="/outfits">Browse Outfits</Link></li>
-          {user ? (
-            <>
-              <li><Link to="/profile">Profile</Link></li>
-              <li><Link to="/outfits">Browse Outfits</Link></li>
-              <li><Link to="/outfits/new">Add Outfit</Link></li>
-              <li><Link to="/userList"> Browse Users</Link></li>
-              <li><Link to="/" onClick={handleSignOut}>Sign Out</Link></li>
-            </>
-          ) : (
-            <>
-              <li><Link to="/sign-in">Sign In</Link></li>
-              <li><Link to="/sign-up">Sign Up</Link></li>
-            </>
-          )}
-        </ul>
-      </div>
-    </nav>
+    <div className="nav-container">
+  
+      {/* Navigation links */}
+      <ul className="nav-links">
+        <li><span onClick={handleHomeClick} className="nav-link">Home</span></li>
+        <li><Link to="/quiz">Style Quiz</Link></li>
+        <li><Link to="/outfits">Browse Outfits</Link></li>
+        {user ? (
+          <>
+            <li><Link to="/profile">Profile</Link></li>
+            <li><Link to="/outfits/new">Add Outfit</Link></li>
+            <li><Link to="/userList">Browse Users</Link></li>
+            <li><Link to="/" onClick={handleSignOut}>Sign Out</Link></li>
+          </>
+        ) : (
+          <>
+            <li><Link to="/sign-in">Sign In</Link></li>
+            <li><Link to="/sign-up">Sign Up</Link></li>
+          </>
+        )}
+      </ul>
+    </div>
+  </nav>
   );
 };
 
