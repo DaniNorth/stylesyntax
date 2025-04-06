@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
-import Dashboard from './components/Dashboard/Dashboard';
+import UserList from './components/UserList/UserList';
 import OutfitForm from './components/OutfitForm/OutfitForm';
 import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
@@ -58,39 +58,36 @@ const App = () => {
      <Background />
       <NavBar/>
       <Routes>
-        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+        <Route path="/" element={user ? <UserList /> : <Landing />} />
+        <Route path="/home" element={<Landing />} />
         {
           user ? (
             <>
               <Route 
                 path="/outfits" 
-                element={
-                  <outfitList outfits={outfits} />
-                } 
+                element={<OutfitList outfits={outfits} />} 
               />
               <Route 
                 path="/outfits/new" 
-                element={
-                  <outfitForm handleAddOutfit={handleAddOutfit} />
-                } 
+                element={<OutfitForm handleAddOutfit={handleAddOutfit} />} 
               />
               <Route 
                 path="/outfits/:updatedID" 
-                element={
-                  <outfitDetails handleDeleteOutfit={handleDeleteOutfit} />
-                } 
+                element={<OutfitDetails handleDeleteOutfit={handleDeleteOutfit} />} 
               />
               <Route 
                 path="/outfits/:updatedID/edit" 
-                element={
-                  <outfitForm handleUpdateOutfit={handleUpdateOutfit} />
-                } 
+                element={<OutfitForm handleUpdateOutfit={handleUpdateOutfit} />} 
+              />
+              <Route 
+                path="/userList" 
+                element={<UserList />} 
               />
             </>
           ) : (
             <>
-              <Route path='/sign-up' element={<SignUpForm />} />
-              <Route path='/sign-in' element={<SignInForm />} />
+              <Route path="/sign-up" element={<SignUpForm />} />
+              <Route path="/sign-in" element={<SignInForm />} />
             </>
           )
         }
