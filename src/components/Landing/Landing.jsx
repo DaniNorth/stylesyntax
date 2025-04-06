@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
+import logo from '../../assets/StyleSyntaxLogo.svg'
 import './Landing.css';
 
 const Landing = () => {
@@ -27,9 +28,15 @@ const Landing = () => {
 
       {/* Placeholder text build out later */}
       <section id="next-section" className="section">
-        <h1 className="hero-title">Welcome to <span>StyleSyntax</span></h1>
-        <p className="hero-subtitle">Your personalized style journey starts here.</p>
 
+        
+
+        <h1 className="hero-title">Welcome to <span>StyleSyntax</span></h1>
+
+        <p className="hero-subtitle">Your personalized style journey starts here.</p>
+        <div className="landing-logo-container">
+          <img src={logo} alt="StyleSyntax Logo" className="landing-logo" />
+        </div>
         {/* Wait for Randall to build out profile and link */}
         {user ? (
           <button className="get-started-btn" onClick={() => navigate('/profile')}>

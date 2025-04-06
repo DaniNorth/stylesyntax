@@ -62,7 +62,7 @@ const App = () => {
       <Routes>
        main
         <Route path="/" element={user ? <UserList /> : <Landing />} />
-        <Route path="/home" element={<Landing />} />
+        <Route path="/landing" element={<Landing />} />
         {
           user ? (
             <>
