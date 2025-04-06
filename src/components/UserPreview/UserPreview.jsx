@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-
+import { useContext, useState, useEffect } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
 
+import "./UserPreview.css";
 
 const UserPreview = () => {
   const { user } = useContext(UserContext);
-  const {otherUsers, setOtherUsers} = useState([]);
+  const [otherUsers, setOtherUsers] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
