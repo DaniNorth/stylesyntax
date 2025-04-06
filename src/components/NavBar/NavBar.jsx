@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate  } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
+import logo from '../../assets/StyleSyntaxLogo.svg';
 import './NavBar.css'
 
 // import Home from './pages/Home';
@@ -23,6 +24,16 @@ const NavBar = () => {
   return (
     <nav>
     <div className="nav-container">
+
+    <div className="logo-section">
+     <Link to="/landing" className="logo-link">
+    <img
+      src={logo}
+      alt="StyleSyntax Logo"
+      className="logo"
+    />
+  </Link>
+    </div>
   
       {/* Navigation links */}
       <ul className="nav-links">

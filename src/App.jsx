@@ -23,7 +23,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const handleAddOutfit = async (outfitFormData) => {
-    const newOufit = await outfitService.create(outfitFormData);
+    const newOutfit = await outfitService.create(outfitFormData);
     setOutfits([newOutfit, ...outfits]); // updating state in asc order
     navigate('/outfits');
   };
@@ -47,7 +47,7 @@ const App = () => {
     const fetchAllOutfits = async () => {
       const outfitsData = await outfitService.index();
 
-      setOutfits(outfitsData); // setting outfits state
+      setOutfits(outfitsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
     }; 
 
     if(user) fetchAllOutfits(); 
@@ -58,44 +58,30 @@ const App = () => {
   return (
     <>
      <Background />
-      <NavBar/>
-      <Routes>
-       main
-        <Route path="/" element={user ? <UserList /> : <Landing />} />
-        <Route path="/landing" element={<Landing />} />
-        {
-          user ? (
-            <>
-              <Route 
-                path="/outfits" 
-                element={<OutfitList outfits={outfits} />} 
-              />
-              <Route 
-                path="/outfits/new" 
-                element={<OutfitForm handleAddOutfit={handleAddOutfit} />} 
-              />
-              <Route 
-                path="/outfits/:updatedID" 
-                element={<OutfitDetails handleDeleteOutfit={handleDeleteOutfit} />} 
-              />
-              <Route 
-                path="/outfits/:updatedID/edit" 
-                element={<OutfitForm handleUpdateOutfit={handleUpdateOutfit} />} 
-              />
-              <Route 
-                path="/userList" 
-                element={<UserList />} 
-              />
-            </>
-          ) : (
-            <>
-              <Route path="/sign-up" element={<SignUpForm />} />
-              <Route path="/sign-in" element={<SignInForm />} />
-            </>
-          )
-        }
-      </Routes>
-      <Footer />
+     <div className="page-container">
+        <NavBar />
+        <main className="content-wrap">
+          <Routes>
+            <Route path="/" element={user ? <UserList /> : <Landing />} />
+            <Route path="/landing" element={<Landing />} />
+            {user ? (
+              <>
+                <Route path="/outfits" element={<OutfitList outfits={outfits} />} />
+                <Route path="/outfits/new" element={<OutfitForm handleAddOutfit={handleAddOutfit} />} />
+                <Route path="/outfits/:updatedID" element={<OutfitDetails handleDeleteOutfit={handleDeleteOutfit} />} />
+                <Route path="/outfits/:updatedID/edit" element={<OutfitForm handleUpdateOutfit={handleUpdateOutfit} />} />
+                <Route path="/userList" element={<UserList />} />
+              </>
+            ) : (
+              <>
+                <Route path="/sign-up" element={<SignUpForm />} />
+                <Route path="/sign-in" element={<SignInForm />} />
+              </>
+            )}
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 };

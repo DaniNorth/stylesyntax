@@ -1,0 +1,70 @@
+/* SignUpForm.css */
+.sign-up-form-container {
+    max-width: 460px;
+    margin: 4rem auto;
+    background-color: var(--grey-cream);
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(161, 157, 179, 0.15);
+}
+
+.sign-up-form-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--sage-dark);
+}
+
+.sign-up-form-container p {
+    color: crimson;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.sign-up-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sign-up-form-container label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--sage-dark);
+}
+
+.sign-up-form-container input {
+    padding: 0.6rem 0 0.6rem 0.3rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--sage-soft);
+    font-size: 1rem;
+    width: 100%;
+}
+
+.sign-up-form-container input:focus {
+    outline: none;
+    border-color: var(--sage-dark);
+    box-shadow: 0 0 0 2px rgba(124, 139, 132, 0.2);
+}
+
+.sign-up-form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.sign-up-form-buttons button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--sage-dark);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-up-form-buttons button:hover {
+    background-color: var(--sage-soft);
+}

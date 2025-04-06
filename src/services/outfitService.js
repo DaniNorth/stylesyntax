@@ -33,9 +33,8 @@ const create = async (outfitFormData) => {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(outfitFormData)
+            body: outfitFormData
         });
         return res.json();
     } catch (error) {
@@ -79,9 +78,8 @@ const updateOutfit = async (updatedID, outfitFormData) => {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(outfitFormData)
+            body: outfitFormData
         });
         return res.json();
     } catch (error) {

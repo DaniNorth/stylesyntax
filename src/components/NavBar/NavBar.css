@@ -1,34 +1,38 @@
 /* NavBar.css */
 .nav-container {
     width: 100vw;
+    height: 170px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 nav {
     background-color: var(--grey-cream);
     border-bottom: 1px solid var(--sage-dark);
     box-shadow: 0 4px 6px rgba(146, 143, 163, 0.05);
-    padding: 0rem 2rem;
+    padding: 0.5rem 2rem 0 0;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+
 nav ul {
     display: flex;
-    gap: 2rem;
+    justify-content: space-evenly;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 1rem 2rem;
 }
 
 nav li a {
     text-decoration: none;
     color: var(--sage-dark);
-    /* #7c8b84 */
     font-weight: 500;
     font-size: 1rem;
     position: relative;
@@ -44,13 +48,11 @@ nav li a::after {
     width: 0%;
     height: 2px;
     background-color: var(--sage-soft);
-    /* #98a9a2 */
     transition: width 0.3s ease;
 }
 
 nav li a:hover {
     color: var(--sage);
-    /* #83968e */
 }
 
 nav li a:hover::after {
@@ -89,11 +91,14 @@ nav li a:hover::after {
 
 .logo-section {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    height: 200px;
 }
 
 .logo {
-    height: 40px;
+    height: 195px;
+    object-fit: contain;
+    margin-right: 2rem;
     transition: transform 0.3s ease;
 }
 
@@ -101,30 +106,7 @@ nav li a:hover::after {
     transform: scale(1.05);
 }
 
-.nav-link {
-    cursor: pointer;
-    position: relative;
-    font-weight: 500;
-    color: var(--sage-dark);
-    text-decoration: none;
-    padding: 0.25rem 0;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 2px;
-    background-color: var(--sage-soft);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--sage);
-}
-
-.nav-link:hover::after {
-    width: 100%;
+.logo-link {
+    display: flex;
+    align-items: center;
 }
