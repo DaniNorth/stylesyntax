@@ -60,6 +60,7 @@ const App = () => {
      <Background />
       <NavBar/>
       <Routes>
+       main
         <Route path="/" element={user ? <UserList /> : <Landing />} />
         <Route path="/home" element={<Landing />} />
         {
