@@ -13,6 +13,22 @@
     --sage-dark: #7c8b84;
 }
 
+/* logo */
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    height: 200px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
 /* NavBar.css */
 .nav-container {
     width: 100vw;
@@ -25,10 +41,8 @@
 nav {
     background-color: var(--grey-cream);
     border-bottom: 1px solid var(--sage-dark);
-    /* #b2aec1 */
     box-shadow: 0 4px 6px rgba(146, 143, 163, 0.05);
-    /* lavender-deep tint */
-    padding: 1rem 2rem;
+    padding: 0rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -71,5 +85,35 @@ nav li a:hover {
 }
 
 nav li a:hover::after {
+    width: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--sage-dark);
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--sage-soft);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--sage);
+}
+
+.nav-link:hover::after {
     width: 100%;
 }

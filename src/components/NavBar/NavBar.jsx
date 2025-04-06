@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
+// import logo from '../../assets/logo.svg'
 import './NavBar.css'
-//******** These Do Not Exist Yet ********* */
+
 // import Home from './pages/Home';
 // import StyleQuiz from './pages/StyleQuiz'
 // import Outfits from './pages/Outfits'
@@ -19,6 +20,11 @@ const NavBar = () => {
   return (
     <nav>
       <div className="nav-container">
+      <div className="logo-section">
+        {/* <Link to="/">
+          <img src={logo} alt="StyleSyntax Logo" className="logo" />
+        </Link> */}
+      </div>
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/quiz">Style Quiz</Link></li>
