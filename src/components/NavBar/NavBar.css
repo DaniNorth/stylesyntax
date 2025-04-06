@@ -86,3 +86,45 @@ nav li a:hover::after {
 .nav-link:hover::after {
     width: 100%;
 }
+
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    cursor: pointer;
+    position: relative;
+    font-weight: 500;
+    color: var(--sage-dark);
+    text-decoration: none;
+    padding: 0.25rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--sage-soft);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--sage);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
