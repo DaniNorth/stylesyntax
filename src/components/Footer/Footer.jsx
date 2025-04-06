@@ -17,11 +17,11 @@ const Footer = () => {
           <p>Created by</p>
           <p className="footer-names">
             <a
-              href="https://www.linkedin.com/in/angela-ellsworth/"
+              href="https://www.linkedin.com/in/randallgadduang/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Angela Ellsworth <FaLinkedinIn className="linkedin-icon" />
+              Randall Gadduang <FaLinkedinIn className="linkedin-icon" />
             </a>
             <span className="separator">• </span>
             <a
@@ -33,11 +33,11 @@ const Footer = () => {
             </a>
             <span className="separator">• </span>
             <a
-              href="https://www.linkedin.com/in/randallgadduang/"
+              href="https://www.linkedin.com/in/angela-ellsworth/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Randall Gadduang <FaLinkedinIn className="linkedin-icon" />
+              Angela Ellsworth <FaLinkedinIn className="linkedin-icon" />
             </a>
           </p>
         </div>
