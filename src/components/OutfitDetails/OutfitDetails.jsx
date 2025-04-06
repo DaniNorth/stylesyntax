@@ -41,25 +41,30 @@ const OutfitDetails = (props) => {
         <main>
             <section>
                 <header>
-                    <p>{outfit.tags?.join(', ') || 'No tags listed'}</p>
                     <h1>{outfit.title}</h1>
-                    <p>
-                        {`${outfit.author.username} posted on 
-                          ${new Date(outfit.createdAt).toLocaleDateString()}`}
-                    </p>
-                    {
-                        outfit.author._id === user._id && (
-                            <>
-                                <Link to={`/outfits/${updatedID}/edit`}>Edit</Link>
-                                <button 
-                                    onClick={() => props.handleDeleteOutfit(updatedID)}>
-                                        Delete
-                                </button>
-                            </>
-                        )
-                    }
+                    <p>{`Posted by ${outfit.author.username} on ${new Date(outfit.createdAt).toLocaleDateString()}`}</p>
+        
+                    {outfit.author._id === user._id && (
+                        <>
+                            <Link to={`/outfits/${updatedID}/edit`}>Edit</Link>
+                            <button onClick={() => props.handleDeleteOutfit(updatedID)}>Delete</button>
+                        </>
+                    )}
                 </header>
-                <p>{outfit.text}</p>
+                {outfit.imageUrl && (
+                    <img
+                        src={outfit.imageUrl}
+                        alt={outfit.title}
+                        style={{ maxWidth: '100%', borderRadius: '12px', marginTop: '1rem' }}
+                    />
+                )}
+                <p><strong>Description:</strong> {outfit.description}</p>
+                <p><strong>Style:</strong> {outfit.styleProfile}</p>
+                <p><strong>Fit:</strong> {outfit.fitPreference}</p>
+                <p><strong>Season:</strong> {outfit.season}</p>
+                <p><strong>Climate:</strong> {outfit.climateFit}</p>
+                <p><strong>Gender Category:</strong> {outfit.genderCategory}</p>
+                <p><strong>Lifestyle Tags:</strong> {outfit.lifestyleTags?.join(', ')}</p>
             </section>
             <section>
                 <h2>Comments</h2>
@@ -78,7 +83,7 @@ const OutfitDetails = (props) => {
                                 `}
                             </p>
                         </header>
-                        <p>{comment.text}</p>
+                        <p>{comment.content}</p>
                     </article>
                 ))}
             </section>
