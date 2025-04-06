@@ -1,0 +1,114 @@
+.footer {
+    background-color: var(--grey-cream);
+    border-top: 1px solid var(--sage-dark);
+    box-shadow: 0 -4px 6px rgba(146, 143, 163, 0.05);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--sage-dark);
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--sage-dark);
+    font-weight: 500;
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.3s ease;
+}
+
+/* Matching NavBar hover underline animation */
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--sage-soft);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--sage);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+.footer-info p {
+    margin: 0.25rem 0;
+    line-height: 1.4;
+}
+
+.footer-names {
+    margin-top: 0.25rem;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-names a {
+    color: var(--sage-dark);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-names a:hover {
+    color: var(--sage);
+    text-decoration: underline;
+}
+
+.linkedin-icon {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.separator {
+    color: var(--sage-muted);
+}
+
+/* Mobile friendly layout */
+@media (max-width: 600px) {
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1rem;
+    }
+
+    .footer-names {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .separator {
+        display: none;
+    }
+}
