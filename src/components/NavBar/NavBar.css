@@ -13,22 +13,6 @@
     --sage-dark: #7c8b84;
 }
 
-/* logo */
-.logo-section {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    margin: 0;
-    height: 200px;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
 /* NavBar.css */
 .nav-container {
     width: 100vw;

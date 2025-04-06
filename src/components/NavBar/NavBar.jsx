@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 // import logo from '../../assets/logo.svg'
 import './NavBar.css'
@@ -20,11 +21,6 @@ const NavBar = () => {
   return (
     <nav>
       <div className="nav-container">
-      <div className="logo-section">
-        {/* <Link to="/">
-          <img src={logo} alt="StyleSyntax Logo" className="logo" />
-        </Link> */}
-      </div>
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/quiz">Style Quiz</Link></li>
@@ -32,6 +28,9 @@ const NavBar = () => {
           {user ? (
             <>
               <li><Link to="/profile">Profile</Link></li>
+              <li><Link to="/outfits">Browse Outfits</Link></li>
+              <li><Link to="/outfits/new">Add Outfit</Link></li>
+              <li><Link to="/userList"> Browse Users</Link></li>
               <li><Link to="/" onClick={handleSignOut}>Sign Out</Link></li>
             </>
           ) : (
@@ -45,5 +44,6 @@ const NavBar = () => {
     </nav>
   );
 };
+
 
 export default NavBar;
