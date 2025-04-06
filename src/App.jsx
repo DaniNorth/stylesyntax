@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import OutfitForm from './components/OutfitForm/OutfitForm';
 import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
+import Footer from './components/Footer/Footer';
 
 import Background from './components/Background/Background';
 import { UserContext } from './contexts/UserContext';
@@ -95,6 +96,7 @@ const App = () => {
           )
         }
       </Routes>
+      <Footer />
     </>
   );
 };
