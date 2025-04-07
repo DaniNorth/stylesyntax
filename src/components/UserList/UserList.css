@@ -1,0 +1,63 @@
+.user-list-container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 2rem;
+    background-color: var(--grey-cream);
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.user-list-container h1 {
+    font-size: 2rem;
+    color: var(--lavender-deep);
+    margin-bottom: 0.5rem;
+}
+
+.user-list-container p {
+    font-size: 1rem;
+    color: var(--sage-dark);
+    margin-bottom: 1.5rem;
+}
+
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    justify-items: center;
+}
+
+.user-preview .button-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.user-preview button {
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-preview .follow-btn {
+    background-color: var(--sage-dark);
+    color: white;
+}
+
+.user-preview .follow-btn:hover {
+    background-color: var(--sage);
+}
+
+.user-preview .unfollow-btn {
+    background-color: var(--clay-rose);
+    color: white;
+}
+
+.user-preview .unfollow-btn:hover {
+    background-color: var(--clay-rose-50);
+}

@@ -71,25 +71,39 @@ const UserProfile = () => {
         <input
           type="file"
           accept="image/*"
+          id="profile-upload"
           onChange={handleFileChange}
         />
-        <button type="submit">Upload Profile Picture</button>
+          <button type="submit">Upload Profile Photo</button>
       </form>
 
-      <p>Welcome, {userData.user.username}</p>
-      <p>
-        Following:{" "}
-        {userData.user.following.length > 0
-          ? userData.user.following.length
-          : " You are not following anyone. Follow a few very stylish StyleSyntax users."}
-      </p>
-      <p>
-        Followers:{" "}
+
+      <h1 className="username"> Welcome, {userData.user.username} </h1>
+      <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
+
+      <p className="follower-following">
         {userData.user.followers.length > 0
-          ? userData.user.followers.length
+          ? `${userData.user.followers.length} followers`
           : "You have 0 followers. Go show off your style!"}
+        {" · "}
+        {userData.user.following.length > 0
+          ? `${userData.user.following.length} following`
+          : "You're not following anyone yet. Find some stylish users!"}
       </p>
-      <p>Quiz Results: {userData.user.quizResults}</p>
+      
+      <div className="profile-buttons">
+        <p>*Share and Edit Not functional*</p>
+        <button>Share</button>
+        <button>Edit profile</button>
+      </div>
+
+      <div className="quiz-results">
+        <p>
+          Quiz Results:{" "}
+          {userData.user.quizResults || "Not taken yet"}
+        </p>
+      </div>
+      
       <button
         className="manage-folders-button"
         onClick={() => setShowModal(true)}
