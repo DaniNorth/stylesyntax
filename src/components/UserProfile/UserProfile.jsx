@@ -7,7 +7,7 @@ import FolderModal from "../FolderModal/FolderModal";
 import "./UserProfile.css";
 
 const UserProfile = () => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState(null);
@@ -26,27 +26,32 @@ const UserProfile = () => {
     if (user) fetchUserData();
   }, [user]);
 
+  const handleFileChange = (evt) => {
+    setFile(evt.target.files[0]);
+  };
+
   const handleImageUpload = async (evt) => {
     evt.preventDefault();
 
-    if (!file) {
+    if (!file || !user) {
       alert("Please select a file first.");
       return;
     }
 
     try {
-      const data = await userService.uploadProfilePic(user._id, file);
-      setUserData((prevData) => ({
-        ...prevData,
-        profileImg: data.profileImg,
-      }));
-
+      const updatedUser = await userService.uploadProfilePic(user._id, file);
+      
       setUser((prevUser) => ({
         ...prevUser,
-        profileImg: data.profileImg,
+        profileImg: updatedUser.profileImg,
       }));
 
-      console.log("Picture Uploaded Successfully", data);
+      setUserData((prevData) => ({
+        ...prevData,
+        profileImg: updatedUser.profileImg,
+      }));
+
+      console.log("Picture Uploaded Successfully", updatedUser);
     } catch (err) {
       console.error("Upload error:", err.message);
     }
@@ -54,10 +59,12 @@ const UserProfile = () => {
 
   return userData ? (
     <main className="user-profile">
+      
+      {/* allows user to upload profile img */}
       <img
-    src={userData.profileImg || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
-    className="profile-img"
-    alt="User profile"
+        src={userData.user.profileImg}
+        className="profile-img"
+        alt="User profile"
         style={{ width: "80px", height: "80px", borderRadius: "50%" }}
       />
       <form onSubmit={handleImageUpload}>
@@ -65,10 +72,11 @@ const UserProfile = () => {
           type="file"
           accept="image/*"
           id="profile-upload"
-          onChange={(e) => setFile(e.target.files[0])}
+          onChange={handleFileChange}
         />
           <button type="submit">Upload Profile Photo</button>
       </form>
+
 
       <h1 className="username"> Welcome, {userData.user.username} </h1>
       <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
