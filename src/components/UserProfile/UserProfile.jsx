@@ -3,12 +3,14 @@ import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
 
 import OutfitCard from "../OutfitCard/OutfitCard";
+import FolderModal from "../FolderModal/FolderModal";
 import "./UserProfile.css"
 
 const UserProfile = () => {
 
   const { user } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   
   useEffect( () => {
     const fetchUserData = async () => {
@@ -29,6 +31,7 @@ const UserProfile = () => {
       <img
         src={userData.profileImg}
         className='profile-img'
+        alt="User profile"
         style={{ width: "80px", height: "80px", borderRadius: "50%" }}
       />
       <p> Button for uploading profile picture goes here</p>
@@ -42,6 +45,12 @@ const UserProfile = () => {
         userData.user.following.length
         : "You have 0 followers. Go show off you style!"}</p>
       <p>Quiz Results: {userData.user.quizResults}</p>
+      <button
+        className="manage-folders-button"
+        onClick={() => setShowModal(true)}
+      >
+        Manage Folders
+      </button>
 
       {/* Added folder */}
       {userData.user.folders?.length > 0 && userData.user.folders.map(folder => (
@@ -54,6 +63,7 @@ const UserProfile = () => {
           </div>
         </section>
       ))}
+    {showModal && <FolderModal onClose={() => setShowModal(false)} />}
     </main>
   ) : (
     <p>Loading...</p>

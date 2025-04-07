@@ -8,7 +8,7 @@
   text-align: center;
 }
 
-.user-profile img {
+.user-profile .profile-img {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -89,4 +89,20 @@
   min-width: 320px;
   max-width: 320px;
   flex: 0 0 auto;
+}
+
+.manage-folders-button {
+  background-color: var(--lavender-deep);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.manage-folders-button:hover {
+  background-color: var(--lavender-soft);
 }
