@@ -27,44 +27,60 @@ const UserProfile = () => {
   }, [user]);
 
   return userData ? (
-    <main className="user-profile">
-      <img
-        src={userData.profileImg}
-        className='profile-img'
-        alt="User profile"
-        style={{ width: "80px", height: "80px", borderRadius: "50%" }}
-      />
-      <p> Button for uploading profile picture goes here</p>
-      <p>Welcome, {userData.user.username}</p>
-      <p>Following: {" "}
-        {userData.user.following.length > 0 ?
-        userData.user.following.length
-        : " You are not following anyone. Follow a few very stylish StyleSyntax users."}</p>
-      <p>Followers: {" "}
-        {userData.user.followers.length > 0 ?
-        userData.user.following.length
-        : "You have 0 followers. Go show off you style!"}</p>
-      <p>Quiz Results: {userData.user.quizResults}</p>
-      <button
-        className="manage-folders-button"
-        onClick={() => setShowModal(true)}
-      >
-        Manage Folders
-      </button>
+       <main className="user-profile">
+  <img
+    src={userData.profileImg || "https://cdn-icons-png.flaticon.com/512/847/847969.png"}
+    className="profile-img"
+    alt="User profile"
+  />
 
-      {/* Added folder */}
-      {userData.user.folders?.length > 0 && userData.user.folders.map(folder => (
-        <section key={folder._id} className="folder-section">
-          <h3>{folder.title}</h3>
-          <div className="scrolling-folder">
-            {folder.outfits?.map(outfit => (
-              <OutfitCard key={outfit._id} outfit={outfit} />
-            ))}
-          </div>
-        </section>
-      ))}
-    {showModal && <FolderModal onClose={() => setShowModal(false)} />}
-    </main>
+  <input
+    type="file"
+    accept="image/*"
+    style={{ display: "none" }}
+    id="profile-upload"
+    // onChange={handleProfileImageUpload}
+  />
+  <label htmlFor="profile-upload" className="upload-profile-btn">
+    <p>*upload not functional*</p>
+    <button>Upload Profile Photo</button>  
+  </label>
+
+  <h1 className="username">{userData.user.username}</h1>
+  <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
+
+  <p className="follower-following">
+    {userData.user.followers.length} followers · {userData.user.following.length} following
+  </p>
+
+  <div className="profile-buttons">
+    <p>*Share and Edit Not functional*</p>
+    <button>Share</button>
+    <button>Edit profile</button>
+  </div>
+
+  <p>Quiz Results: {userData.user.quizResults || "Not taken yet"}</p>
+
+  <button
+    className="manage-folders-button"
+    onClick={() => setShowModal(true)}
+  >
+    Manage Folders
+  </button>
+
+  {userData.user.folders?.length > 0 &&
+    userData.user.folders.map(folder => (
+      <section key={folder._id} className="folder-section">
+        <h3>{folder.title}</h3>
+        <div className="scrolling-folder">
+          {folder.outfits?.map(outfit => (
+            <OutfitCard key={outfit._id} outfit={outfit} />
+          ))}
+        </div>
+      </section>
+    ))}
+  {showModal && <FolderModal onClose={() => setShowModal(false)} />}
+</main>
   ) : (
     <p>Loading...</p>
   );
