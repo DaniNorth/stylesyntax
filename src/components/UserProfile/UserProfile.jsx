@@ -59,6 +59,8 @@ const UserProfile = () => {
 
   return userData ? (
     <main className="user-profile">
+      
+      {/* allows user to upload profile img */}
       <img
         src={userData.user.profileImg}
         className="profile-img"
@@ -73,6 +75,7 @@ const UserProfile = () => {
         />
         <button type="submit">Upload Profile Picture</button>
       </form>
+
       <p>Welcome, {userData.user.username}</p>
       <p>
         Following:{" "}
