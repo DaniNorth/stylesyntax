@@ -65,7 +65,6 @@ const UserProfile = () => {
         src={userData.user.profileImg}
         className="profile-img"
         alt="User profile"
-        style={{ width: "80px", height: "80px", borderRadius: "50%" }}
       />
       <form onSubmit={handleImageUpload}>
         <input
