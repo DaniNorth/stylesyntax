@@ -188,11 +188,8 @@ const OutfitForm = (props) => {
                 )}
                 <label htmlFor="image">Upload Image</label>
                 <input type="file" name="image" id="image" accept="image/*" onChange={handleFileChange} />
-
                 {errorMessage && (
-                    <p style={{ color: 'red', marginBottom: '1rem' }}>
-                        {errorMessage}
-                    </p>
+                  <p className="error-message">{errorMessage}</p>
                 )}
                 <button type="submit">Submit</button>
             </form>
