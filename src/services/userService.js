@@ -88,6 +88,23 @@ const uploadProfilePic = async (userId, imageFile) => {
   };
 };
 
+const updateUser = async (userId, userFormData) => {
+  try {
+    const res = await fetch (`${BASE_URL}/${userId}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userFormData)
+    });
+    return res.json();
+  } catch (err) {
+    console.error(err);
+    throw new Error(err.message);
+  }
+};
+
 
 export {
   index,
@@ -95,4 +112,5 @@ export {
   followUser,
   unfollowUser,
   uploadProfilePic,
+  updateUser,
 };
