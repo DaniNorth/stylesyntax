@@ -29,6 +29,7 @@ const UserProfile = () => {
       <img
         src={userData.profileImg}
         className='profile-img'
+        alt="User profile"
         style={{ width: "80px", height: "80px", borderRadius: "50%" }}
       />
       <p> Button for uploading profile picture goes here</p>
