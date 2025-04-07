@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from 'react-router';
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from "../../services/userService";
 
@@ -93,7 +94,7 @@ const UserProfile = () => {
       <div className="profile-buttons">
         <p>*Share and Edit Not functional*</p>
         <button>Share</button>
-        <button>Edit profile</button>
+        <Link className="edit-profile-button" to={`/profile/edit`}>Edit profile </Link>
       </div>
 
       <div className="quiz-results">
