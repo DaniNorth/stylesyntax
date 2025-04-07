@@ -38,8 +38,35 @@ const getUserById = async (userId) => {
   }
 };
 
+const uploadProfilePic = async (userId, imageFile) => {
+  try {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    const res = await fetch(`${BASE_URL}/${userId}/upload-profile-pic`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: formData,
+    });
+
+    const data = await res.json();
+    
+    if (!res.ok) {
+      throw new Error(data.error || "Upload failed");
+    };
+
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw new Error(err.message);
+  };
+};
+
 
 export {
   index,
   getUserById,
+  uploadProfilePic,
 };
