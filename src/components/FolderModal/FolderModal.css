@@ -1,150 +1,150 @@
 .folder-modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .folder-modal {
-    background: var(--grey-cream);
-    border-radius: 16px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    position: relative;
-    animation: fadeIn 0.3s ease;
-  }
-  
-  .folder-modal h2 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--lavender-deep);
-    font-size: 1.4rem;
-    text-align: center;
-  }
-  
-  input[type="text"] {
-    width: 100%;
-    padding: 0.6rem;
-    margin-bottom: 0.75rem;
-    border-radius: 8px;
-    border: 1px solid var(--clay-rose-50);
-    font-size: 1rem;
-    background-color: white;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.folder-modal {
+  background: var(--grey-cream);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.folder-modal h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--lavender-deep);
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--clay-rose-50);
+  font-size: 1rem;
+  background-color: white;
+}
+
+.create-folder-button {
+  background-color: var(--sage-soft);
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.create-folder-button:hover {
+  background-color: var(--sage-dark);
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--lavender-deep);
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.folder-list {
+  list-style: none;
+  padding: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+.folder-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--dusty-cream);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.folder-item-row span {
+  font-weight: 600;
+  color: var(--lavender-deep);
+}
+
+.folder-item-row button {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--lavender-soft);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.folder-item-row button:hover {
+  background-color: var(--lavender-deep);
+}
+
+.folder-edit-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.folder-edit-group input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--lavender-soft);
+}
+
+.create-folder-section {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.create-folder-section input {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--clay-rose-50);
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
 
-  .create-folder-button {
-    background-color: var(--sage-soft);
-    color: white;
-    padding: 0.6rem 1rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .create-folder-button:hover {
-    background-color: var(--sage-dark);
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--lavender-deep);
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.85rem;
-    margin-bottom: 0.75rem;
-    text-align: center;
-  }
-  
-  .folder-list {
-    list-style: none;
-    padding: 0;
-    max-height: 240px;
-    overflow-y: auto;
-    margin-bottom: 1rem;
-  }
-  
-  .folder-item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--dusty-cream);
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-  }
-  
-  .folder-item-row span {
-    font-weight: 600;
-    color: var(--lavender-deep);
-  }
-  
-  .folder-item-row button {
-    margin-left: 0.5rem;
-    font-size: 0.8rem;
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    border: none;
-    background: var(--lavender-soft);
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .folder-item-row button:hover {
-    background-color: var(--lavender-deep);
-  }
-  
-  .folder-edit-group {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .folder-edit-group input {
-    flex: 1;
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid var(--lavender-soft);
-  }
-  
-  .create-folder-section {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .create-folder-section input {
-    flex: 1;
-    padding: 0.6rem;
-    border-radius: 8px;
-    border: 1px solid var(--clay-rose-50);
-    font-size: 1rem;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}
