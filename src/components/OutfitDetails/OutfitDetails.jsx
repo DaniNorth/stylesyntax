@@ -9,6 +9,9 @@ const OutfitDetails = (props) => {
     const [outfit, setOutfit] = useState(null);
     const { updatedID } = useParams();
     const { user } = useContext(UserContext);
+    
+    const [editingCommentId, setEditingCommentId] = useState(null);
+    const [editFormData, setEditFormData] = useState({ content: '' })
 
     const handleAddComment = async (commentFormData) => {
         const newComment = await outfitService.createComment(
@@ -21,14 +24,47 @@ const OutfitDetails = (props) => {
             comments: [...outfit.comments, newComment]
         });
     };
-    
+
+    const handleEditClick = (comment) => {
+        setEditingCommentId(comment._id);
+        setEditFormData({ content: comment.content })
+    }
+
+    const handleUpdateComment = async (commentId) => {
+        try {
+            const updatedComment = await outfitService.updateComment(updatedID, commentId, editFormData);
+
+            const updatedComments = outfit.comments.map((comment) =>
+            comment._id === commentId ? updatedComment : comment);
+            setOutfit({ ...outfit, comments: updatedComments });
+            setEditingCommentId(null);
+            setEditFormData({ content: '' })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleCancelEdit = () => {
+        setEditingCommentId(null);
+        setEditFormData({ content: '' })
+    }
+
+    const handleDeleteComment = async (commentId) => {
+        try {
+          const deletedComment = await outfitService.deleteComment(updatedID, commentId);
+          const updatedComments = outfit.comments.filter(c => c._id !== commentId);
+          setOutfit({ ...outfit, comments: updatedComments });
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
     useEffect(() => {
         const fetchOutfit = async () => {
             const outfitData = await outfitService.show(updatedID);
             setOutfit(outfitData);
         }
-        fetchOutfit(); // this will run when the effect function runs
-        // the effect function runs when we have a updatedID
+        fetchOutfit(); // Fetch outfit when updatedID changes
 
     }, [updatedID]);
 
@@ -36,6 +72,8 @@ const OutfitDetails = (props) => {
     if (Object.keys(outfit).length === 0 || !outfit.title) {
         return <main>No outfit found.</main>;
     }
+
+
 
     return (
         <main>
@@ -75,16 +113,38 @@ const OutfitDetails = (props) => {
 
                 {!outfit.comments?.length && <p>There are no comments</p>}
                 {outfit.comments?.map((comment) => (
-                    <article key={comment._id}>
-                        <header>
-                            <p>
-                                {`${comment.author.username} posted on
-                                    ${new Date(comment.createdAt).toLocaleDateString()}
-                                `}
-                            </p>
-                        </header>
-                        <p>{comment.content}</p>
-                    </article>
+                   <article key={comment._id}>
+                   <header>
+                     <p>
+                       {`${comment.author.username} posted on ${new Date(comment.createdAt).toLocaleDateString()}`}
+                     </p>
+                   </header>
+               
+                   {editingCommentId === comment._id ? (
+                     <form onSubmit={(e) => {
+                       e.preventDefault();
+                       handleUpdateComment(comment._id);
+                     }}>
+                       <textarea
+                         value={editFormData.content}
+                         onChange={(e) => setEditFormData({ content: e.target.value })}
+                         required
+                       />
+                       <button type="submit">Save</button>
+                       <button type="button" onClick={handleCancelEdit}>Cancel</button>
+                     </form>
+                   ) : (
+                     <>
+                       <p>{comment.content}</p>
+                       {comment.author._id === user._id && (
+                         <div>
+                         <button onClick={() => handleEditClick(comment)}>Edit</button>
+                         <button onClick={() => handleDeleteComment(comment._id)}>Delete</button>
+                       </div>
+                       )}
+                     </>
+                   )}
+                 </article>
                 ))}
             </section>
         </main>
