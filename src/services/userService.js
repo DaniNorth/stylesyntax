@@ -38,8 +38,33 @@ const getUserById = async (userId) => {
   }
 };
 
+const followUser = async (userId) => {
+  const res = await fetch(`${BASE_URL}/${userId}/follow`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  const data = await res.json();
+  if (data.err) throw new Error(data.err);
+  return data;
+};
+
+const unfollowUser = async (userId) => {
+  const res = await fetch(`${BASE_URL}/${userId}/unfollow`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  const data = await res.json();
+  if (data.err) throw new Error(data.err);
+  return data;
+};
 
 export {
   index,
   getUserById,
+  followUser,
+  unfollowUser,
 };

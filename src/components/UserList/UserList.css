@@ -1,5 +1,5 @@
 .user-list-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 80px auto;
     padding: 2rem;
     background-color: var(--grey-cream);
@@ -28,6 +28,13 @@
     justify-items: center;
 }
 
+.user-preview .button-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
 .user-preview button {
     padding: 0.6rem 1rem;
     border-radius: 0.5rem;
@@ -35,33 +42,22 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 0;
-    width: auto;
 }
 
-/* Follow button */
-.user-preview button:first-of-type {
+.user-preview .follow-btn {
     background-color: var(--sage-dark);
     color: white;
 }
 
-.user-preview button:first-of-type:hover {
+.user-preview .follow-btn:hover {
     background-color: var(--sage);
 }
 
-/* Unfollow button */
-.user-preview button:last-of-type {
+.user-preview .unfollow-btn {
     background-color: var(--clay-rose);
     color: white;
 }
 
-.user-preview button:last-of-type:hover {
+.user-preview .unfollow-btn:hover {
     background-color: var(--clay-rose-50);
-}
-
-.user-preview .button-group {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    justify-content: center;
 }
