@@ -48,8 +48,10 @@ const UserList = () => {
                 className="profile-img"
               />
               <p>{otherUser.username}</p>
-              <button>Follow</button>
-              <button>Unfollow</button>
+              <div className="button-group">
+                <button>Follow</button>
+                <button>Unfollow</button>
+              </div>
             </div>
           ))}
         </section>
