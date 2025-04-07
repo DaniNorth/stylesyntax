@@ -1,8 +1,8 @@
 import { useState } from 'react';
+import './CommentForm.css'
 
 const CommentForm = (props) => {
-    // const [formData, setFormData] = useState({text: ''});
-    const [formData, setFormData] = useState({content: ''});
+   const [formData, setFormData] = useState({content: ''});
     const handleChange = (evt) => {
         setFormData({
             ...formData, 
@@ -16,7 +16,7 @@ const CommentForm = (props) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="comment-form">
             <label htmlFor="text-input">Your Comment</label>
             <textarea 
                 required

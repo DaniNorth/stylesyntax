@@ -1,0 +1,123 @@
+.outfit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 1rem;
+    background-color: var(--grey-cream);
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.outfit-header {
+    border-bottom: 2px solid var(--dusty-pink);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.outfit-header h1 {
+    font-size: 2rem;
+    color: var(--lavender-deep);
+}
+
+.outfit-header p {
+    font-size: 0.9rem;
+    color: var(--sage-dark);
+}
+
+.outfit-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.outfit-details p {
+    margin: 0.5rem 0;
+    color: var(--sage-dark);
+}
+
+.comments-section {
+    margin-top: 2rem;
+    background-color: var(--dusty-cream);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.comments-section article,
+.comment-card {
+    background-color: white;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s;
+}
+
+.comments-section article:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.comments-section article header p,
+.comment-card header p {
+    font-size: 0.85rem;
+    color: var(--sage-soft);
+    margin-bottom: 0.5rem;
+}
+
+.comments-section article p {
+    color: var(--sage-dark);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.comments-section article div,
+.comment-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.comments-section textarea,
+.comment-card textarea {
+    width: 100%;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    border: 1px solid var(--lavender-light);
+    font-size: 1rem;
+}
+
+.comment-buttons button,
+.comments-section button {
+    background-color: var(--sage-muted);
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+.comment-buttons button:hover,
+.comments-section button:hover {
+    background-color: var(--sage-dark);
+}
+
+.comment-buttons .cancel {
+    background-color: var(--clay-rose);
+}
+
+.comment-buttons .cancel:hover {
+    background-color: var(--sage-soft);
+}
+
+.comments-section button:nth-child(2) {
+    background-color: var(--clay-rose);
+}
+
+.comments-section button:nth-child(2):hover {
+    background-color: var(--clay-rose-50);
+}

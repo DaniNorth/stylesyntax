@@ -4,6 +4,7 @@ import * as outfitService from '../../services/outfitService';
 // import { show } from '../../services/outfitService'; // best way to import
 import { UserContext } from '../../contexts/UserContext';
 import { useParams, Link } from 'react-router';
+import './OutfitDetails.css';
 
 const OutfitDetails = (props) => {
     const [outfit, setOutfit] = useState(null);
@@ -76,8 +77,8 @@ const OutfitDetails = (props) => {
 
 
     return (
-        <main>
-            <section>
+        <main className='outfit-container'>
+            <section className='outfit-header'>
                 <header>
                     <h1>{outfit.title}</h1>
                     <p>{`Posted by ${outfit.author.username} on ${new Date(outfit.createdAt).toLocaleDateString()}`}</p>
@@ -90,10 +91,11 @@ const OutfitDetails = (props) => {
                     )}
                 </header>
                 {outfit.imageUrl && (
-                    <img
+                    <img 
+                        className='outfit-image'
                         src={outfit.imageUrl}
                         alt={outfit.title}
-                        style={{ maxWidth: '100%', borderRadius: '12px', marginTop: '1rem' }}
+                        // style={{ maxWidth: '100%', borderRadius: '12px', marginTop: '1rem' }}
                     />
                 )}
                 <p><strong>Description:</strong> {outfit.description}</p>
@@ -104,7 +106,7 @@ const OutfitDetails = (props) => {
                 <p><strong>Gender Category:</strong> {outfit.genderCategory}</p>
                 <p><strong>Lifestyle Tags:</strong> {outfit.lifestyleTags?.join(', ')}</p>
             </section>
-            <section>
+            <section className='comments-section'>
                 <h2>Comments</h2>
                 
                 <CommentForm 
