@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 const CommentForm = (props) => {
-    const [formData, setFormData] = useState({text: ''});
-
+    // const [formData, setFormData] = useState({text: ''});
+    const [formData, setFormData] = useState({content: ''});
     const handleChange = (evt) => {
         setFormData({
             ...formData, 
@@ -21,7 +21,8 @@ const CommentForm = (props) => {
             <textarea 
                 required
                 type="text"
-                name="text" 
+                // name="text" 
+                name="content" 
                 id="text-input"
                 value={formData.text}
                 onChange={handleChange} 
