@@ -22,7 +22,6 @@ const UserProfile = ({ id }) => {
         const targetId = id && id !== user._id ? id : user._id;
         const data = await userService.getUserById(targetId);
         setUserData(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
