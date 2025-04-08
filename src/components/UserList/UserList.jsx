@@ -22,7 +22,6 @@ const UserList = () => {
         setLoading(false);
       }
     };
-
     if (user) fetchUsers();
   }, [user]);
 
