@@ -14,6 +14,7 @@ const UserUpdateForm = () => {
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
+    console.log(user)
   };
 
   const handleSubmit = async (evt) => {
@@ -22,26 +23,25 @@ const UserUpdateForm = () => {
     try {
       const updatedUser = await userService.updateUser(user._id, formData);
       setUser(updatedUser);
-      console.log(formData.username);
+      console.log(user);
       console.log("updated username and email!")
     } catch (err) {
       console.error(err);
     }
   };
-  
+
   useEffect( () => {
     const fetchUser = async () => {
       const userData = await userService.getUserById(user._id);
       setFormData(userData);
+      console.log(user);
     }
     if (user) fetchUser();
   }, [user]);
 
-
-
   return(
     <main>
-      <h1>Edit {formData.username}</h1>
+      <h1>Edit {user.username}</h1>
       <form className="user-update-form" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
@@ -59,7 +59,7 @@ const UserUpdateForm = () => {
           type="email"
           name="email"
           id="email"
-          // value={formData.email}
+          value={formData.email}
           onChange={handleChange}
         />
         
