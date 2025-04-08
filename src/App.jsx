@@ -12,7 +12,6 @@ import OutfitForm from './components/OutfitForm/OutfitForm';
 import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
 import Footer from './components/Footer/Footer';
-import UserPreview from './components/UserPreview/UserPreview'
 import Background from './components/Background/Background';
 import UserUpdateForm from './components/UserUpdateForm/UserUpdateForm'
 
@@ -80,8 +79,6 @@ const App = () => {
                 <Route path="/userList" element={<UserList />} />
                 <Route path="/profile/:id" Component={UserProfileWrapper} />
                 <Route path="/profile/" element={<UserProfile />} /> 
-                {/* <Route path="/profile/:id" Component={({ params }) => <UserProfile id={params.id} />}/> */}
-                {/* <Route path="/profile/:id" element={<UserProfile />} />  */}
                 <Route path="/profile/edit" element={<UserUpdateForm />} />
 
               </>
