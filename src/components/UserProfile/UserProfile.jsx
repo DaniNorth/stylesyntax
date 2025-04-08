@@ -75,17 +75,17 @@ const UserProfile = ({ id }) => {
         alt="User profile"
       />
 
-            {isOwnProfile && (
-        <form onSubmit={handleImageUpload}>
-          <input
-            type="file"
-            accept="image/*"
-            id="profile-upload"
-            onChange={handleFileChange}
-          />
-          <button type="submit">Upload Profile Photo</button>
-        </form>
-      )}
+        {isOwnProfile && (
+          <form className="upload-form" onSubmit={handleImageUpload}>
+            <input
+              type="file"
+              accept="image/*"
+              id="profile-upload"
+              onChange={handleFileChange}
+            />
+            <button type="submit">Upload Photo</button>
+          </form>
+        )}
 
       <h1 className="username"> Welcome, {userData.user.username} </h1>
       <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
@@ -102,8 +102,6 @@ const UserProfile = ({ id }) => {
 
             {isOwnProfile && (
         <div className="profile-buttons">
-          <p>*Share and Edit Not functional*</p>
-          <button>Share</button>
           <Link className="edit-profile-button" to={`/profile/edit`}>
             Edit profile
           </Link>
