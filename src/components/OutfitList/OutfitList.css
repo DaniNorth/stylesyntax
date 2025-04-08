@@ -1,7 +1,32 @@
 .outfit-list-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    justify-items: center;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+.filter-button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2rem;
+  margin-top: 1.6rem;
+  margin-bottom: .1rem;
+}
+
+.open-filter-button {
+  background-color: var(--lavender-deep);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.open-filter-button:hover {
+  background-color: var(--lavender-soft);
+}

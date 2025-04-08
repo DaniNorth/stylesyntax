@@ -9,10 +9,14 @@ const OutfitList = ({ outfits }) => {
 
   return (
     <main className="outfit-list">
-      <button className='open-filter-button' 
-      onClick={() => setShowFilter(true)}>
-        Filter
-      </button>
+      <div className="filter-button-container">
+        <button
+          className="open-filter-button"
+          onClick={() => setShowFilter(true)}
+        >
+          Filter
+        </button>
+      </div>
       {showFilter && (
         <FilterOutfitsModal onClose={() => setShowFilter(false)} />
       )}
