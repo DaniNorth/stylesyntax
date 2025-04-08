@@ -38,3 +38,34 @@
     cursor: pointer;
     color: var(--sage-dark);
 }
+
+.filter-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--lavender-soft);
+    display: flex;
+    justify-content: center;
+}
+
+.clear-filters-button {
+    background-color: var(--clay-rose-50);
+    /* bright rose tone from your palette */
+    color: var(--sage-dark);
+    /* deep green = great contrast */
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.clear-filters-button:hover,
+.clear-filters-button:focus {
+    background-color: var(--sage-dark);
+    /* dark contrast green */
+    color: var(--grey-cream);
+    /* soft off-white */
+    outline: 2px solid var(--grey-cream);
+    outline-offset: 2px;
+}
