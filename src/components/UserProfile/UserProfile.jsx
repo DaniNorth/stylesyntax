@@ -65,8 +65,7 @@ const UserProfile = ({ id }) => {
   return userData ? (
     <main className="user-profile">
 
-      {/* Always show profile image */}
-      <img
+            <img
         src={
           userData.user.profileImg?.trim()
             ? userData.user.profileImg
@@ -76,8 +75,7 @@ const UserProfile = ({ id }) => {
         alt="User profile"
       />
 
-      {/* Show file upload only on OWN profile */}
-      {isOwnProfile && (
+            {isOwnProfile && (
         <form onSubmit={handleImageUpload}>
           <input
             type="file"
@@ -102,8 +100,7 @@ const UserProfile = ({ id }) => {
           : "You're not following anyone yet. Find some stylish users!"}
       </p>
 
-      {/* Show Share & Edit buttons only on OWN profile */}
-      {isOwnProfile && (
+            {isOwnProfile && (
         <div className="profile-buttons">
           <p>*Share and Edit Not functional*</p>
           <button>Share</button>
@@ -113,8 +110,7 @@ const UserProfile = ({ id }) => {
         </div>
       )}
 
-      {/* Show quiz results only for logged-in user, if preferred */}
-      {isOwnProfile && (
+            {isOwnProfile && (
         <div className="quiz-results">
           <p>
             Quiz Results: {userData.user.quizResults || "Not taken yet"}
@@ -122,8 +118,7 @@ const UserProfile = ({ id }) => {
         </div>
       )}
 
-      {/* Show folder management only for OWN profile */}
-      {isOwnProfile && (
+           {isOwnProfile && (
         <>
           <button
             className="manage-folders-button"
@@ -136,8 +131,7 @@ const UserProfile = ({ id }) => {
         </>
       )}
 
-      {/* Show folders only if viewing your own profile */}
-      {isOwnProfile &&
+        {isOwnProfile &&
         userData.user.folders?.length > 0 &&
         userData.user.folders.map((folder) => (
           <section key={folder._id} className="folder-section">
