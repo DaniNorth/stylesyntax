@@ -1,0 +1,118 @@
+.quiz-results-container {
+    max-width: 640px;
+    margin: 3rem auto;
+    background: linear-gradient(to bottom right, var(--grey-cream), var(--dusty-cream));
+    border: 1px solid var(--lavender-muted);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    animation: fadeIn 0.5s ease;
+    text-align: center;
+  }
+  
+  .quiz-results-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--lavender-deep);
+    text-shadow: 1px 1px var(--dusty-pink);
+    font-weight: 700;
+  }
+  
+  .result-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .result-section strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--sage-dark);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .result-value {
+    font-size: 1.15rem;
+    color: var(--sage-dark);
+    background: var(--lavender-light);
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  }
+  
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+  
+  .tag-item {
+    background-color: var(--clay-rose-50);
+    color: var(--lavender-deep);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 24px;
+    border: 1px solid var(--clay-rose);
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .tag-item:hover {
+    background-color: var(--clay-rose);
+    color: white;
+    transform: scale(1.05);
+  }  
+
+  .filter-style-btn {
+    margin-top: 2rem;
+    background-color: var(--lavender-deep);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .filter-style-btn:hover {
+    background-color: var(--clay-rose);
+    color: white;
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeInUp 0.6s forwards;
+  }
+  
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  .delay-4 { animation-delay: 0.8s; }
+  
+  .pop-in {
+    animation: popIn 0.4s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes popIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
