@@ -15,14 +15,19 @@ const OutfitCard = ({ outfit }) => {
     <>
       <Link to={`/outfits/${outfit._id}`} className="outfit-card">
         <div className="outfit-card-content">
-          <h2>{outfit.title}</h2>
-          <img src={outfit.imageUrl} alt={outfit.title} />
-          <p className="style">{outfit.styleProfile}</p>
-          <p className="description">{outfit.description}</p>
+          <img src={outfit.imageUrl} alt={outfit.title} className="outfit-img" />
+          <h2 className="outfit-title">{outfit.title}</h2>
+          <p className="posted-by">by {outfit.author?.username}</p>
+          <p className="style">{outfit.styleProfile?.toUpperCase()}</p>
+          <p className="description-snippet">
+            {outfit.description?.split(' ').slice(0, 5).join(' ')}...
+          </p>
         </div>
-        <button className="add-button" onClick={handleAddClick}>+ Add</button>
+        <br />
+        <div className="outfit-card-footer">
+          <button className="add-button" onClick={handleAddClick}>+ Add</button>
+        </div>
       </Link>
-
       {showModal && (
         <AddOutfitModal 
           outfitId={outfit._id}
