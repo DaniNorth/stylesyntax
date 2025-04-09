@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as quizService from '../../services/quizService';
 import './Quiz.css';
 
+
 const Quiz = () => {
+
+const navigate = useNavigate();
+
   const [gender, setGender] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,9 +37,9 @@ const Quiz = () => {
 
   const submitQuiz = async (finalAnswers) => {
     try {
-      const result = await quizService.submitAnswers(finalAnswers);
-      console.log("Quiz submitted:", result);
-      // Optional: navigate or show result component
+      const data = await quizService.submitAnswers(finalAnswers);
+      localStorage.setItem('quizResults', JSON.stringify(data.quizResults));
+      navigate('/quiz/results');
     } catch (err) {
       console.error("Submission error:", err);
     }
@@ -58,7 +63,7 @@ const Quiz = () => {
     }
   };
 
-  // Seperated quiz into 2 sections to determine q set. Step1 Q1
+  // Seperated quiz into 2 sections to determine q set. Step 1. Q1
   if (!gender) {
     return (
       <div className="quiz-container">
