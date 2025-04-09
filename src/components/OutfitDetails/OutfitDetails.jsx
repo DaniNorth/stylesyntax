@@ -84,10 +84,14 @@ const OutfitDetails = (props) => {
                     <p>{`Posted by ${outfit.author.username} on ${new Date(outfit.createdAt).toLocaleDateString()}`}</p>
         
                     {outfit.author._id === user._id && (
-                        <>
-                            <Link to={`/outfits/${updatedID}/edit`}>Edit</Link>
-                            <button onClick={() => props.handleDeleteOutfit(updatedID)}>Delete</button>
-                        </>
+                        <div className="edit-delete-buttons">
+                        <Link to={`/outfits/${updatedID}/edit`} className="edit-button">
+                          Edit
+                        </Link>
+                        <button onClick={() => props.handleDeleteOutfit(updatedID)} className="delete-button">
+                          Delete
+                        </button>
+                      </div>
                     )}
                 </header>
                 {outfit.imageUrl && (
@@ -95,7 +99,6 @@ const OutfitDetails = (props) => {
                         className='outfit-image'
                         src={outfit.imageUrl}
                         alt={outfit.title}
-                        // style={{ maxWidth: '100%', borderRadius: '12px', marginTop: '1rem' }}
                     />
                 )}
                 <p><strong>Description:</strong> {outfit.description}</p>
