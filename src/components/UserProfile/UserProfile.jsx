@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from 'react-router'; 
+import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from "../../services/userService";
 
@@ -13,7 +13,7 @@ const UserProfile = ({ id }) => {
   const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState(null);
 
-  // 🔐 Determine if the profile belongs to the logged-in user
+  // Determine if the profile belongs to the logged-in user
   const isOwnProfile = !id || id === user._id;
 
   useEffect(() => {
@@ -63,32 +63,31 @@ const UserProfile = ({ id }) => {
 
   return userData ? (
     <main className="user-profile">
-
-            <img
+      <img
         src={
           userData.user.profileImg?.trim()
             ? userData.user.profileImg
-            : 'https://cdn-icons-png.flaticon.com/512/847/847969.png'
+            : "https://cdn-icons-png.flaticon.com/512/847/847969.png"
         }
         className="profile-img"
         alt="User profile"
       />
 
-        {isOwnProfile && (
-          <form className="upload-form" onSubmit={handleImageUpload}>
-            <input
-              type="file"
-              accept="image/*"
-              id="profile-upload"
-              onChange={handleFileChange}
-            />
-            <button type="submit">Upload Photo</button>
-          </form>
-        )}
+      {isOwnProfile && (
+        <form className="upload-form" onSubmit={handleImageUpload}>
+          <input
+            type="file"
+            accept="image/*"
+            id="profile-upload"
+            onChange={handleFileChange}
+          />
+          <button type="submit">Upload Photo</button>
+        </form>
+      )}
 
       <h1 className="username"> Welcome, {userData.user.username} </h1>
       <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
-
+      <p className="user-bio">{userData.user.bio}</p>
       <p className="follower-following">
         {userData.user.followers.length > 0
           ? `${userData.user.followers.length} followers`
@@ -99,7 +98,8 @@ const UserProfile = ({ id }) => {
           : "You're not following anyone yet. Find some stylish users!"}
       </p>
 
-            {isOwnProfile && (
+
+      {isOwnProfile && (
         <div className="profile-buttons">
           <Link className="edit-profile-button" to={`/profile/edit`}>
             Edit profile
@@ -107,15 +107,13 @@ const UserProfile = ({ id }) => {
         </div>
       )}
 
-            {isOwnProfile && (
+      {isOwnProfile && (
         <div className="quiz-results">
-          <p>
-            Quiz Results: {userData.user.quizResults || "Not taken yet"}
-          </p>
+          <p>Quiz Results: {userData.user.quizResults || "Not taken yet"}</p>
         </div>
       )}
 
-           {isOwnProfile && (
+      {isOwnProfile && (
         <>
           <button
             className="manage-folders-button"
@@ -128,7 +126,8 @@ const UserProfile = ({ id }) => {
         </>
       )}
 
-        {isOwnProfile &&
+
+      {isOwnProfile &&
         userData.user.folders?.length > 0 &&
         userData.user.folders.map((folder) => (
           <section key={folder._id} className="folder-section">
@@ -140,7 +139,6 @@ const UserProfile = ({ id }) => {
             </div>
           </section>
         ))}
-
     </main>
   ) : (
     <p>Loading...</p>

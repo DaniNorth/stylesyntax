@@ -1,0 +1,80 @@
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.upload-profile-image-button, .delete-user-button {
+  display: block;
+  margin: 1rem auto; /* centers horizontally */
+  padding: 0.5rem 1rem;
+  background-color: var(--lavender-muted);
+  color: white;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.upload-profile-image-button:hover,
+.delete-user-button:hover {
+  background-color: var(--lavender-deep);
+  color: white;
+}
+.user-update-wrapper {
+  max-width: 1000px;
+  margin: 4rem auto;
+  background-color: var(--grey-cream);
+  padding: 3rem 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--lavender-deep);
+}
+
+.change-photo-button, .delete {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: var(--lavender-muted);
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.change-photo-button:hover {
+  background-color: var(--lavender-deep);
+}
+
+.user-update-form {
+  outline: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  margin: 1rem auto;
+}

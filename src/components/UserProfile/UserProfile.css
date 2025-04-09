@@ -23,7 +23,7 @@
   transform: scale(1.05);
 }
 
-.upload-form {
+.user-profile .upload-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@
   width: 500px;
 }
 
-.upload-form input[type="file"] {
+.user-profile .upload-form input[type="file"] {
   font-size: 0.95rem;
   padding: 0.3rem 0rem .3rem .3rem;
   border: 1px solid var(--sage-dark);
@@ -46,7 +46,7 @@
   max-width: 300px;
 }
 
-.upload-form button {
+.user-profile .upload-form button {
   background-color: var(--lavender-deep);
   color: white;
   font-size: 15px;
@@ -57,7 +57,7 @@
   transition: background-color 0.3s ease;
 }
 
-.upload-form button:hover {
+.user-profile .upload-form button:hover {
   background-color: var(--lavender-soft);
   color: var(--lavender-deep);
 }
@@ -80,6 +80,18 @@
   margin-bottom: 2rem;
 }
 
+.user-handle, .user-bio, .follower-following  {
+  font-size: 1rem;
+  color: var(--sage-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* .follower-following {
+  font-size: 0.95rem;
+  color: var(--clay-rose-50);
+  margin-bottom: 2rem;
+} */
+
 .profile-buttons {
   margin-top: 1rem;
   display: flex;
@@ -89,7 +101,8 @@
 }
 
 .profile-buttons button,
-.edit-profile-button {
+.edit-profile-button,
+.manage-folders-button {
   padding: 0.5rem 1.2rem;
   background-color: var(--sage-dark);
   color: white;
