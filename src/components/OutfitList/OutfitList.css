@@ -1,9 +1,8 @@
-.outfit-list-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  justify-items: center;
+.filter-modal {
+  background-color: white;
+  color: var(--lavender-deep);
+  border-left: 1px solid var(--lavender-soft);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.08);
 }
 
 .filter-button-container {
@@ -29,4 +28,12 @@
 
 .open-filter-button:hover {
   background-color: var(--lavender-soft);
+}
+
+.outfit-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
 }
