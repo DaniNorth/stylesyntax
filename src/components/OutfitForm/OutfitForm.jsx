@@ -5,8 +5,6 @@ import * as outfitService from '../../services/outfitService';
 import './OutfitForm.css';
 
 
-
-
 const OutfitForm = (props) => {
     const { updatedID } = useParams();
 
@@ -53,6 +51,11 @@ const OutfitForm = (props) => {
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
+
+        if(formData.author && typeof formData.author === 'object') {
+          formData.author = formData.author._id;
+        }
+
         const submissionData = new FormData();
       
         Object.entries(formData).forEach(([key, value]) => {
@@ -71,18 +74,19 @@ const OutfitForm = (props) => {
               await props.handleAddOutfit(submissionData);
             }
           
-            setErrorMessage(''); // clear any previous errors
+            setErrorMessage(''); 
             navigate('/outfits'); 
           } catch (error) {
             console.error(error);
           
             if (error.response?.data?.error) {
-              setErrorMessage(error.response.data.error); // from server
+              setErrorMessage(error.response.data.error); 
             } else {
               setErrorMessage('Something went wrong while saving the outfit.');
             }
           }
         };
+        
         useEffect(() => {
             const fetchOutfit = async () => {
               const outfitData = await outfitService.show(updatedID);

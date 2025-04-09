@@ -56,9 +56,11 @@ const updateOutfit = async (updatedID, outfitFormData) => {
       },
       body: outfitFormData,
     });
-    return res.json();
+
+    const data = await res.json();
+    return data;
   } catch (error) {
-    console.error(error);
+    console.error('Update failed:', error);
   }
 };
 

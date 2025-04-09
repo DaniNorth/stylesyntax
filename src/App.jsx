@@ -47,7 +47,7 @@ const App = () => {
     const updatedOutfit = await outfitService.updateOutfit(updatedID, outfitFormData);
     setOutfits(outfits.map((outfit) => (
       updatedID ===  outfit._id ? updatedOutfit : outfit
-    ))); // using .map for this helps preserve order when updating state
+    )));
 
     navigate(`/outfits/${updatedID}`);
   };
