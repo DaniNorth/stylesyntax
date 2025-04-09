@@ -5,6 +5,7 @@ import * as userService from "../../services/userService";
 
 import OutfitCard from "../OutfitCard/OutfitCard";
 import FolderModal from "../FolderModal/FolderModal";
+import QuizResult from "../QuizResult/QuizResult"
 import "./UserProfile.css";
 
 const UserProfile = ({ id }) => {
@@ -73,17 +74,6 @@ const UserProfile = ({ id }) => {
         alt="User profile"
       />
 
-      {isOwnProfile && (
-        <form className="upload-form" onSubmit={handleImageUpload}>
-          <input
-            type="file"
-            accept="image/*"
-            id="profile-upload"
-            onChange={handleFileChange}
-          />
-          <button type="submit">Upload Photo</button>
-        </form>
-      )}
 
       <h1 className="username"> Welcome, {userData.user.username} </h1>
       <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
@@ -109,7 +99,7 @@ const UserProfile = ({ id }) => {
 
       {isOwnProfile && (
         <div className="quiz-results">
-          <p>Quiz Results: {userData.user.quizResults || "Not taken yet"}</p>
+          <p>Quiz Results: {<QuizResult />|| "Not taken yet"}</p>
         </div>
       )}
 
