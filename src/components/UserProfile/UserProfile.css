@@ -28,17 +28,33 @@
   color: var(--sage-dark);
 }
 
-.user-profile .profile-stats {
+.user-handle, .user-bio, .follower-following  {
+  font-size: 1rem;
+  color: var(--sage-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* .follower-following {
+  font-size: 0.95rem;
+  color: var(--clay-rose-50);
+  margin-bottom: 2rem;
+} */
+
+.profile-buttons {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.user-profile .profile-stats div {
-  flex: 1;
-  padding: 0.75rem;
-  background-color: var(--sage-soft);
+.profile-buttons button,
+.edit-profile-button,
+.manage-folders-button {
+  padding: 0.5rem 1.2rem;
+  background-color: var(--sage-dark);
+  color: white;
+  border: none;
   border-radius: 0.5rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(161, 157, 179, 0.1);
