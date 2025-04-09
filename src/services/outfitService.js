@@ -49,6 +49,12 @@ const create = async (outfitFormData) => {
 // UPDATE an outfit
 const updateOutfit = async (updatedID, outfitFormData) => {
   try {
+    // Log everything you're sending
+    console.log('FormData being submitted:');
+    for (let pair of outfitFormData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
     const res = await fetch(`${BASE_URL}/${updatedID}`, {
       method: 'PUT',
       headers: {
@@ -56,9 +62,14 @@ const updateOutfit = async (updatedID, outfitFormData) => {
       },
       body: outfitFormData,
     });
-    return res.json();
+
+    console.log('Response status:', res.status);
+    const data = await res.json();
+    console.log('Response data:', data);
+
+    return data;
   } catch (error) {
-    console.error(error);
+    console.error('Update failed:', error);
   }
 };
 
