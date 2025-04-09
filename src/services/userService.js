@@ -105,6 +105,20 @@ const updateUser = async (userId, userFormData) => {
   }
 };
 
+const deleteUser = async (userId) => {
+  try {
+    const res = await fetch (`${BASE_URL}/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return res.json();
+  } catch (error) {
+    console.error(error);
+    throw new Error(err.message);
+  }
+};
 
 export {
   index,
@@ -113,4 +127,5 @@ export {
   unfollowUser,
   uploadProfilePic,
   updateUser,
+  deleteUser,
 };
