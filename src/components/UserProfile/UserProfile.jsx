@@ -7,11 +7,13 @@ import OutfitCard from "../OutfitCard/OutfitCard";
 import FolderModal from "../FolderModal/FolderModal";
 import "./UserProfile.css";
 
-const UserProfile = () => {
+const UserProfile = ( {id} ) => {
   const { user, setUser } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState(null);
+
+  const isOwnProfile = !id || id === user._id;
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -70,17 +72,6 @@ const UserProfile = () => {
         alt="User profile"
       />
 
-      {isOwnProfile && (
-        <form className="upload-form" onSubmit={handleImageUpload}>
-          <input
-            type="file"
-            accept="image/*"
-            id="profile-upload"
-            onChange={handleFileChange}
-          />
-          <button type="submit">Upload Photo</button>
-        </form>
-      )}
 
       <h1 className="username"> Welcome, {userData.user.username} </h1>
       <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
