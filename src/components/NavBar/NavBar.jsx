@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate  } from 'react-router';
+import { Link, useNavigate  } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import logo from '../../assets/StyleSyntaxLogo.svg';
 import './NavBar.css'
