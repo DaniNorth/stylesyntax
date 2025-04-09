@@ -14,8 +14,9 @@ import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
 import Footer from './components/Footer/Footer';
 import Background from './components/Background/Background';
-import UserUpdateForm from './components/UserUpdateForm/UserUpdateForm'
-import Quiz from './components/Quiz/Quiz'
+import UserUpdateForm from './components/UserUpdateForm/UserUpdateForm';
+import Quiz from './components/Quiz/Quiz';
+import QuizResult from './components/QuizResult/QuizResult'
 
 import * as outfitService from './services/outfitService';
 import UserProfile from './components/UserProfile/UserProfile';
@@ -95,6 +96,8 @@ const App = () => {
                 <Route path="/profile/" element={<UserProfile />} /> 
                 <Route path="/profile/edit" element={<UserUpdateForm />} />
                 <Route path="/quiz" element={<Quiz />} />
+                <Route path="/quiz/results" element={<QuizResult />} />
+
 
               </>
             ) : (
