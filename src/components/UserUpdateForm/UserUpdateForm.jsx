@@ -28,7 +28,7 @@ const UserUpdateForm = () => {
     try {
       const updatedUser = await userService.updateUser(user._id, formData);
       setUser(updatedUser);
-      console.log(formData.username);
+      console.log(user);
       console.log("updated username and email!")
       console.log("updated username and bio!");
       navigate("/profile")
@@ -42,6 +42,7 @@ const UserUpdateForm = () => {
       const userData = await userService.getUserById(user._id);
       setFormData(userData);
       console.log(user);
+
       console.log(user.bio);
     };
     if (user) fetchUser();
@@ -66,7 +67,7 @@ const UserUpdateForm = () => {
         {showUploadPhotoModal && (
           <UploadPhotoModal onClose={() => setUploadPhotoModal(false)} />
         )}
-
+        
       <form className="user-update-form" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
@@ -75,6 +76,7 @@ const UserUpdateForm = () => {
           id="username"
           value={formData.username}
           onChange={handleChange}
+
         />
         <label htmlFor="bio">Bio:</label>
         <textarea

@@ -7,7 +7,7 @@ import './Landing.css';
 const Landing = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
-
+  
   {/* make scroll smoother for better UE */}
   const handleScroll = () => {
     document.getElementById('next-section')?.scrollIntoView({ behavior: 'smooth' });

@@ -7,18 +7,21 @@ import OutfitCard from "../OutfitCard/OutfitCard";
 import FolderModal from "../FolderModal/FolderModal";
 import "./UserProfile.css";
 
-const UserProfile = () => {
+const UserProfile = ({ id }) => {
   const { user, setUser } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState(null);
 
+  // Determine if the profile belongs to the logged-in user
+  const isOwnProfile = !id || id === user._id;
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const data = await userService.getUserById(user._id);
+        const targetId = id && id !== user._id ? id : user._id;
+        const data = await userService.getUserById(targetId);
         setUserData(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -95,6 +98,7 @@ const UserProfile = () => {
           : "You're not following anyone yet. Find some stylish users!"}
       </p>
 
+
       {isOwnProfile && (
         <div className="profile-buttons">
           <Link className="edit-profile-button" to={`/profile/edit`}>
@@ -121,6 +125,7 @@ const UserProfile = () => {
           {showModal && <FolderModal onClose={() => setShowModal(false)} />}
         </>
       )}
+
 
       {isOwnProfile &&
         userData.user.folders?.length > 0 &&
