@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router';
 import { useParams } from 'react-router';
 import { UserContext } from './contexts/UserContext';
+import { useLocation } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
@@ -14,6 +15,7 @@ import OutfitDetails from './components/OutfitDetails/OutfitDetails';
 import Footer from './components/Footer/Footer';
 import Background from './components/Background/Background';
 import UserUpdateForm from './components/UserUpdateForm/UserUpdateForm'
+import Quiz from './components/Quiz/Quiz'
 
 import * as outfitService from './services/outfitService';
 import UserProfile from './components/UserProfile/UserProfile';
@@ -49,17 +51,29 @@ const App = () => {
     navigate(`/outfits/${updatedID}`);
   };
 
+  const location = useLocation();
+
   useEffect(() => {
     const fetchAllOutfits = async () => {
-      const outfitsData = await outfitService.index();
-
-      setOutfits(outfitsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
-    }; 
-
-    if(user) fetchAllOutfits(); 
-    // ^ only fetch outfits when a user is logged in
-  }, [user]); // adding user dependency
-  // because the effect depends on the user to run
+      try {
+        const outfitsData = await outfitService.index();
+        setOutfits(outfitsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)));
+      } catch (err) {
+        console.error('Failed to fetch outfits:', err);
+      }
+    };
+  
+    const shouldFetch = [
+      '/outfits',
+      '/outfits/new',
+      '/profile',
+    ].some(path => location.pathname.startsWith(path));
+  
+    if (user && shouldFetch) {
+      fetchAllOutfits();
+    }
+  }, [user, location.pathname]);
+  
 
   return (
     <>
@@ -80,6 +94,7 @@ const App = () => {
                 <Route path="/profile/:id" Component={UserProfileWrapper} />
                 <Route path="/profile/" element={<UserProfile />} /> 
                 <Route path="/profile/edit" element={<UserUpdateForm />} />
+                <Route path="/quiz" element={<Quiz />} />
 
               </>
             ) : (
