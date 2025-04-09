@@ -5,6 +5,7 @@ import * as userService from "../../services/userService";
 
 import OutfitCard from "../OutfitCard/OutfitCard";
 import FolderModal from "../FolderModal/FolderModal";
+import QuizResult from "../QuizResult/QuizResult"
 import "./UserProfile.css";
 
 const UserProfile = ({ id }) => {
@@ -98,7 +99,7 @@ const UserProfile = ({ id }) => {
 
       {isOwnProfile && (
         <div className="quiz-results">
-          <p>Quiz Results: {userData.user.quizResults || "Not taken yet"}</p>
+          <p>Quiz Results: {<QuizResult />|| "Not taken yet"}</p>
         </div>
       )}
 
