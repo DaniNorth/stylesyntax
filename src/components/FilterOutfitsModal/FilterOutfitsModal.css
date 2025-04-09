@@ -37,6 +37,10 @@
     cursor: pointer;
     color: var(--sage-dark);
 }
+.filter-button-group {
+    display: flex;
+    gap: 1rem;
+  }
 
 .filter-footer {
     margin-top: 1rem;

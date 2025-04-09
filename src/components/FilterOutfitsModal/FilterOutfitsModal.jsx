@@ -45,6 +45,22 @@ const FilterOutfitsModal = ({ onClose, filters, setFilters }) => {
     setActiveSection(prev => (prev === section ? null : section));
   };
 
+  //logic for user style prefrence button
+  const handleUseQuizResults = () => {
+    const stored = localStorage.getItem('quizResults');
+    if (stored) {
+      const result = JSON.parse(stored);
+      setFilters({
+        styleProfile: [result.styleProfile],
+        lifestyleTags: result.lifestyleTags || [],
+        season: result.season ? [result.season] : [],
+        climateFit: result.climateFit ? [result.climateFit] : [],
+        fitPreference: [result.fitPreference],
+        genderCategory: [result.genderCategory],
+      });
+    }
+  };
+
   return (
     <aside className={`filter-modal ${slideIn ? 'slide-in' : 'slide-out'}`}>
       <div className="filter-header">
@@ -119,21 +135,26 @@ const FilterOutfitsModal = ({ onClose, filters, setFilters }) => {
 
       {/* Clear all filters */}
       <div className="filter-footer">
-        <button
-          className="clear-filters-button"
-          onClick={() =>
-            setFilters({
-              styleProfile: [],
-              lifestyleTags: [],
-              season: [],
-              climateFit: [],
-              fitPreference: [],
-              genderCategory: [],
-            })
-          }
-        >
-          Clear Filters
-        </button>
+        <div className="filter-button-group">
+          <button
+            className="clear-filters-button"
+            onClick={() =>
+              setFilters({
+                styleProfile: [],
+                lifestyleTags: [],
+                season: [],
+                climateFit: [],
+                fitPreference: [],
+                genderCategory: [],
+              })
+            }
+          >
+            Clear Filters
+          </button>
+          <button className="clear-filters-button apply-quiz-button" onClick={handleUseQuizResults}>
+            Use My Quiz Results
+          </button>
+        </div>
       </div>
     </aside>
   );
