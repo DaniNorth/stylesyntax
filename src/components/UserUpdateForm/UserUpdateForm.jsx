@@ -13,6 +13,7 @@ const UserUpdateForm = () => {
     username: user.username,
     bio: user.bio,
   });
+  
   const [showUploadPhotoModal, setUploadPhotoModal] = useState(false);
   const [showDeleteProfileModal, setDeleteProfileModal] = useState(false);
 
@@ -25,11 +26,10 @@ const UserUpdateForm = () => {
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
+
     try {
       const updatedUser = await userService.updateUser(user._id, formData);
       setUser(updatedUser);
-      console.log(user);
-      console.log("updated username and email!")
       console.log("updated username and bio!");
       navigate("/profile")
     } catch (err) {
@@ -40,20 +40,18 @@ const UserUpdateForm = () => {
   useEffect(() => {
     const fetchUser = async () => {
       const userData = await userService.getUserById(user._id);
-      setFormData(userData);
-      console.log(user);
-
-      console.log(user.bio);
+      setFormData(userData.user);
+      console.log("in the user effect",userData);
     };
     if (user) fetchUser();
   }, [user]);
-
+  
   return (
     <main className="user-update-wrapper">
       <h1>Edit {user.username}</h1>
       <div className="profile-image-wrapper">
         <img
-          src={user.profileImg || "/default-profile.png"}
+          src={formData.profileImg || 'https://cdn-icons-png.flaticon.com/512/847/847969.png'}
           alt="Profile"
           className="profile-image"
         />
@@ -67,7 +65,7 @@ const UserUpdateForm = () => {
         {showUploadPhotoModal && (
           <UploadPhotoModal onClose={() => setUploadPhotoModal(false)} />
         )}
-        
+
       <form className="user-update-form" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input
@@ -76,7 +74,6 @@ const UserUpdateForm = () => {
           id="username"
           value={formData.username}
           onChange={handleChange}
-
         />
         <label htmlFor="bio">Bio:</label>
         <textarea

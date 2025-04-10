@@ -46,7 +46,7 @@ const UploadPhotoModal = ({ onClose }) => {
           ×
         </button>
         <h2>Upload Profile Photo</h2>
-        {isPhotoUploaded && <p>Photo Uploaded</p>}
+        {isPhotoUploaded && <p className="photo-uploaded-message">Photo Uploaded!</p>}
         <form className="upload-photo-form" onSubmit={handleImageUpload}>
           <input
             type="file"

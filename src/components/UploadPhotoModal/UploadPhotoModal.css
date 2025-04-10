@@ -60,3 +60,13 @@
 .upload-photo-submit-button:hover {
   background-color: var(--lavender-deep);
 }
+
+.photo-uploaded-message {
+  color: var(--sage-dark);
+  /* background-color: var(--grey-cream-90); */
+  padding: 0.5rem 1rem;
+  /* border-radius: 8px; */
+  font-weight: bold;
+  text-align: center;
+  /* margin-top: 0.75rem; */
+}
