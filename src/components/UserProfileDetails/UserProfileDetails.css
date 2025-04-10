@@ -1,0 +1,71 @@
+.user-profile-details {
+    max-width: 1000px;
+    margin: 4rem auto;
+    background-color: var(--grey-cream);
+    padding: 3rem 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.user-profile-details .profile-img {
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--lavender-deep);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.user-profile-details .profile-img:hover {
+    transform: scale(1.05);
+}
+
+.user-profile-details .username {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+    color: var(--sage-dark);
+}
+
+.user-profile-details .user-handle {
+    font-size: 1rem;
+    color: var(--sage-dark);
+    margin-bottom: 1.5rem;
+}
+
+.user-profile-details .user-bio {
+    font-size: 1rem;
+    color: var(--sage-dark);
+    margin-bottom: 1.5rem;
+}
+
+.user-profile-details .follower-following {
+    font-size: 0.95rem;
+    color: var(--sage-dark);
+    margin-bottom: 2rem;
+}
+
+.user-profile-details .details-buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.user-profile-details .details-buttons button {
+    padding: 0.5rem 1.2rem;
+    background-color: var(--sage-dark);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.user-profile-details .details-buttons button:hover {
+    background-color: var(--sage-soft);
+    color: var(--sage-dark);
+}

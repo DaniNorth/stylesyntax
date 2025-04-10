@@ -13,7 +13,6 @@ const UserList = () => {
     const fetchUsers = async () => {
       try {
         const fetchedUsers = await userService.index();
-
         const filtered = fetchedUsers.filter(u => u._id !== user._id);
         setUsers(filtered);
       } catch (err) {
@@ -22,37 +21,15 @@ const UserList = () => {
         setLoading(false);
       }
     };
+
     if (user) fetchUsers();
   }, [user]);
 
-  const handleFollow = async (targetId) => {
-    try {
-      const res = await userService.followUser(targetId);
-      const updated = res.updatedUser;
-
-      setUsers(prev =>
-        prev.map(u => (u._id === updated._id ? updated : u))
-      );
-    } catch (err) {
-      console.error(err);
-    }
+  const updateUserInList = (updatedUser) => {
+    setUsers(prev =>
+      prev.map(update => (update._id === updatedUser._id ? updatedUser : update))
+    );
   };
-
-  const handleUnfollow = async (targetId) => {
-    try {
-      const res = await userService.unfollowUser(targetId);
-      const updated = res.updatedUser;
-
-      setUsers(prev =>
-        prev.map(u => (u._id === updated._id ? updated : u))
-      );
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const isFollowing = (targetUser) =>
-    targetUser.followers?.some((f) => f._id === user._id);
 
   if (loading) return <main>Loading users...</main>;
 
@@ -63,14 +40,12 @@ const UserList = () => {
       {users.length === 0 ? (
         <p>No other users found yet.</p>
       ) : (
-        <section className='user-grid'>
+        <section className="user-grid">
           {users.map(otherUser => (
-            <UserPreview 
+            <UserPreview
               key={otherUser._id}
               otherUser={otherUser}
-              isFollowing={isFollowing(otherUser)}
-              handleFollow={handleFollow}
-              handleUnfollow={handleUnfollow}
+              onUpdateUser={updateUserInList}
             />
           ))}
         </section>

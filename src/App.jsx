@@ -1,14 +1,13 @@
 import { useContext, useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router';
-import { useParams } from 'react-router';
+import { Routes, Route, useNavigate,useParams, useLocation } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
-import { useLocation } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 import UserList from './components/UserList/UserList';
+import UserProfileDetails from './components/UserProfileDetails/UserProfileDetails';
 import OutfitForm from './components/OutfitForm/OutfitForm';
 import OutfitList from './components/OutfitList/OutfitList';
 import OutfitDetails from './components/OutfitDetails/OutfitDetails';
@@ -23,7 +22,14 @@ import UserProfile from './components/UserProfile/UserProfile';
 
 const UserProfileWrapper = () => {
   const { id } = useParams();
-  return <UserProfile id={id} />;
+  const { user } = useContext(UserContext)
+
+  if (user._id === id) {
+    return <UserProfile id={id}/>
+  } else {
+    return  <UserProfileDetails id={id}/>;
+  }
+  
 };
 
 const App = () => {
@@ -93,6 +99,7 @@ const App = () => {
                 <Route path="/outfits/:updatedID/edit" element={<OutfitForm handleUpdateOutfit={handleUpdateOutfit} />} />
                 <Route path="/userList" element={<UserList />} />
                 <Route path="/profile/:id" Component={UserProfileWrapper} />
+                <Route path="/profile/:id" element={<UserProfileDetails />} />
                 <Route path="/profile/" element={<UserProfile />} /> 
                 <Route path="/profile/edit" element={<UserUpdateForm />} />
                 <Route path="/quiz" element={<Quiz />} />

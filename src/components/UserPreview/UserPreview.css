@@ -1,18 +1,14 @@
-.user-preview-container {
-  max-width: 460px;
-  margin: 4rem auto;
-  background-color: var(--grey-cream);
-  padding: 2.5rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(161, 157, 179, 0.15);
-  text-align: center;
-}
-
 .user-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  background-color: var(--grey-cream);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(161, 157, 179, 0.15);
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
 }
 
 .user-preview img {
@@ -20,50 +16,48 @@
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .user-preview p {
   font-size: 1rem;
   color: var(--sage-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-.user-preview button {
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-  background-color: var(--sage-dark);
+.user-preview .button-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+.user-preview .follow-btn {
+  background-color: var(--lavender-deep);
   color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 1rem;
 }
 
-.user-preview button:hover {
-  background-color: var(--sage-soft);
+.user-preview .follow-btn:hover {
+  background-color: var(--lavender-soft);
 }
 
-.user-preview .user-stats {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.user-preview .user-stats div {
-  padding: 0.75rem;
-  background-color: var(--sage-soft);
+.user-preview .unfollow-btn {
+  background-color: var(--clay-rose);
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
   border-radius: 0.5rem;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(161, 157, 179, 0.1);
-}
-
-.user-preview .user-stats div p {
   font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.user-preview .user-stats div p:first-child {
-  color: var(--sage-dark);
+.user-preview .unfollow-btn:hover {
+  background-color: var(--clay-rose-50);
 }
