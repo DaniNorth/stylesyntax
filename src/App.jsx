@@ -1,8 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { Routes, Route, useNavigate,useParams, useLocation } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
-// import { useParams } from 'react-router';
-// import { useLocation } from 'react-router-dom';
 
 import NavBar from './components/NavBar/NavBar';
 import Landing from './components/Landing/Landing';
