@@ -12,7 +12,6 @@ const UserProfile = ({ id }) => {
   const { user, setUser } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [file, setFile] = useState(null);
 
   // Determine if the profile belongs to the logged-in user
   const isOwnProfile = !id || id === user._id;
@@ -31,37 +30,6 @@ const UserProfile = ({ id }) => {
     if (user) fetchUserData();
   }, [user]);
 
-  const handleFileChange = (evt) => {
-    setFile(evt.target.files[0]);
-  };
-
-  const handleImageUpload = async (evt) => {
-    evt.preventDefault();
-
-    if (!file || !user) {
-      alert("Please select a file first.");
-      return;
-    }
-
-    try {
-      const updatedUser = await userService.uploadProfilePic(user._id, file);
-      
-      setUser((prevUser) => ({
-        ...prevUser,
-        profileImg: updatedUser.profileImg,
-      }));
-
-      setUserData((prevData) => ({
-        ...prevData,
-        profileImg: updatedUser.profileImg,
-      }));
-
-      console.log("Picture Uploaded Successfully", updatedUser);
-    } catch (err) {
-      console.error("Upload error:", err.message);
-    }
-  };
-
   return userData ? (
     <main className="user-profile">
       <img
@@ -73,7 +41,6 @@ const UserProfile = ({ id }) => {
         className="profile-img"
         alt="User profile"
       />
-
 
       <h1 className="username"> Welcome, {userData.user.username} </h1>
       <p className="user-handle">@{userData.user.username.toLowerCase()}</p>
@@ -88,7 +55,6 @@ const UserProfile = ({ id }) => {
           : "You're not following anyone yet. Find some stylish users!"}
       </p>
 
-
       {isOwnProfile && (
         <div className="profile-buttons">
           <Link className="edit-profile-button" to={`/profile/edit`}>
@@ -99,7 +65,7 @@ const UserProfile = ({ id }) => {
 
       {isOwnProfile && (
         <div className="quiz-results">
-          <p>Quiz Results: {<QuizResult />|| "Not taken yet"}</p>
+          <h1>Quiz Results: {<QuizResult />|| "Not taken yet"}</h1>
         </div>
       )}
 

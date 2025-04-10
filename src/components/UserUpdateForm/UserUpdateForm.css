@@ -36,21 +36,14 @@
   font-family: 'Inter', sans-serif;
 }
 
-.profile-image-wrapper {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  margin: 0 auto 2rem;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
 .profile-image {
-  width: 100%;
-  height: 100%;
+  width: 260px;
+  height: 260px;
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid var(--lavender-deep);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 .change-photo-button, .delete {
