@@ -29,37 +29,3 @@
     padding: 2rem;
     justify-items: center;
 }
-
-.user-preview .button-group {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    justify-content: center;
-}
-
-.user-preview button {
-    padding: 0.6rem 1rem;
-    border-radius: 0.5rem;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.user-preview .follow-btn {
-    background-color: var(--sage-dark);
-    color: white;
-}
-
-.user-preview .follow-btn:hover {
-    background-color: var(--sage);
-}
-
-.user-preview .unfollow-btn {
-    background-color: var(--clay-rose);
-    color: white;
-}
-
-.user-preview .unfollow-btn:hover {
-    background-color: var(--clay-rose-50);
-}
