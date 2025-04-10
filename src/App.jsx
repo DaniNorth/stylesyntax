@@ -39,7 +39,7 @@ const App = () => {
 
   const handleAddOutfit = async (outfitFormData) => {
     const newOutfit = await outfitService.create(outfitFormData);
-    setOutfits([newOutfit, ...outfits]); // updating state in asc order
+    setOutfits([newOutfit, ...outfits]); 
     navigate('/outfits');
   };
 

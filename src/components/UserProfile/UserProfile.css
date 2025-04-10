@@ -80,7 +80,9 @@
   margin-bottom: 2rem;
 }
 
-.user-handle, .user-bio, .follower-following  {
+.user-handle,
+.user-bio,
+.follower-following {
   font-size: 1rem;
   color: var(--sage-dark);
   margin-bottom: 1.5rem;
