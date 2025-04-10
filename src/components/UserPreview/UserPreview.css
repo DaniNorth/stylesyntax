@@ -25,39 +25,41 @@
   margin-bottom: 0.75rem;
 }
 
-.user-preview .button-group {
+.user-preview .preview-button-group {
   display: flex;
   gap: 0.5rem;
   margin-top: 0.5rem;
   justify-content: center;
 }
 
-.user-preview .follow-btn {
-  background-color: var(--lavender-deep);
-  color: white;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+
+/* SUPER specific styles to override global button rules */
+.user-preview .preview-button-group .follow-btn {
+  background-color: var(--lavender-deep) !important;
+  color: white !important;
+  padding: 0.6rem 1rem !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
 }
 
-.user-preview .follow-btn:hover {
-  background-color: var(--lavender-soft);
+.user-preview .preview-button-group .follow-btn:hover {
+  background-color: var(--lavender-soft) !important;
 }
 
-.user-preview .unfollow-btn {
-  background-color: var(--clay-rose);
-  color: white;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.user-preview .preview-button-group .unfollow-btn {
+  background-color: var(--clay-rose) !important;
+  color: white !important;
+  padding: 0.6rem 1rem !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
 }
 
-.user-preview .unfollow-btn:hover {
-  background-color: var(--clay-rose-50);
+.user-preview .preview-button-group .unfollow-btn:hover {
+  background-color: var(--clay-rose-50) !important;
 }
