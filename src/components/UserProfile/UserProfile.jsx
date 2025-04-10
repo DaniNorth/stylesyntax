@@ -65,7 +65,7 @@ const UserProfile = ({ id }) => {
 
       {isOwnProfile && (
         <div className="quiz-results">
-          <h1 className="quiz-results-text">Quiz Results: {<QuizResult />|| "Not taken yet"}</h1>
+          <h1 className="quiz-results-text">{<QuizResult />|| "Not taken yet"}</h1>
         </div>
       )}
 
