@@ -52,7 +52,7 @@ const UserUpdateForm = () => {
       <div className="profile-image-wrapper">
         <img
           src={formData.profileImg || 'https://cdn-icons-png.flaticon.com/512/847/847969.png'}
-          alt="Profile"
+          alt="User Profile"
           className="profile-image"
         />
       </div>
