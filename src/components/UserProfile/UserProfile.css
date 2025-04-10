@@ -59,7 +59,7 @@
 
 .user-profile .upload-form button:hover {
   background-color: var(--lavender-soft);
-  color: var(--lavender-deep);
+  color: var(--grey-cream);
 }
 
 .username {
@@ -108,9 +108,10 @@
 }
 
 .profile-buttons button:hover,
-.edit-profile-button:hover {
+.edit-profile-button:hover,
+.manage-folders-button:hover {
   background-color: var(--sage-soft);
-  color: var(--sage-dark);
+  color: var(--lavender-light);
 }
 
 .quiz-results {
@@ -120,6 +121,11 @@
   margin: 2rem auto;
   max-width: 600px;
   font-style: italic;
+}
+
+.quiz-results-text {
+  color: var(--dusty-pink)
+
 }
 
 .folder-section {
