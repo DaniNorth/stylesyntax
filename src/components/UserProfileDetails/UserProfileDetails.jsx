@@ -45,7 +45,20 @@ const UserProfileDetails = () => {
       </div>
 
       <div className="details-buttons">
-        {isFollowing ? (
+      <button
+          className={isFollowing ? "unfollow-btn" : "follow-btn"}
+          onClick={async () => {
+            const res = isFollowing
+              ? await userService.unfollowUser(otherUser._id)
+              : await userService.followUser(otherUser._id);
+            setOtherUser(res.updatedUser);
+          }}
+        >
+          {isFollowing ? "Unfollow" : "Follow"}
+        </button>
+
+
+        {/* {isFollowing ? (
           <button onClick={async () => {
             const res = await userService.unfollowUser(otherUser._id);
             setOtherUser(res.updatedUser);
@@ -59,7 +72,7 @@ const UserProfileDetails = () => {
           }}>
             Follow
           </button>
-        )}
+        )} */}
       </div>
     </main>
   );
