@@ -70,7 +70,6 @@
     color: var(--sage-dark);
 }
 
-/* Dynamic follow/unfollow styling */
 .user-profile-details .follow-btn {
     background-color: var(--lavender-deep) !important;
     color: white !important;
