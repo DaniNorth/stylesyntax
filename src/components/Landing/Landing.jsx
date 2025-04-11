@@ -18,7 +18,7 @@ const Landing = () => {
   return (
     <main className="landing-container">
 
-      {/* adds banner from the assetss folder */}
+      {/* adds banner from the assetss folder through import*/}
       <video className="video-banner" autoPlay muted loop playsInline>
         <source src={backgroundVideo} type="video/mp4" />
       </video>
