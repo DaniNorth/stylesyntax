@@ -27,7 +27,6 @@ const UploadPhotoModal = ({ onClose }) => {
         ...prevUser,
         profileImg: updatedUser.profileImg,
       }));
-      console.log("Picture Uploaded Successfully", updatedUser);
 
       setIsPhotoUploaded(true);
 
