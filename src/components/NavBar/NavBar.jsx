@@ -30,7 +30,6 @@ const NavBar = () => {
   </Link>
     </div>
   
-      {/* Navigation links */}
       <ul className="nav-links">
         <li><span onClick={handleHomeClick} className="nav-link">Home</span></li>
         <li><Link to="/quiz">Style Quiz</Link></li>
