@@ -1,4 +1,7 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/outfits`;
+const BASE_URL =
+  import.meta.env.MODE === 'development'
+    ? 'http://localhost:3000/outfits'
+    : `${import.meta.env.VITE_BACK_END_SERVER_URL}/outfits`;
 
 /* ========= OUTFITS ========= */
 

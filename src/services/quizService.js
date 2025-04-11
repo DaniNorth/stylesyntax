@@ -1,4 +1,7 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/quiz`;
+const BASE_URL =
+  import.meta.env.MODE === 'development'
+    ? 'http://localhost:3000/quiz'
+    : `${import.meta.env.VITE_BACK_END_SERVER_URL}/quiz`;
 
 const getQuestions = async (gender) => {
   try {

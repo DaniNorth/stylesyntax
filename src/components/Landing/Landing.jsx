@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import logo from '../../assets/StyleSyntaxLogo.svg'
 import './Landing.css';
+import backgroundVideo from '../../assets/LandingBanner.mp4';
+
 
 const Landing = () => {
   const { user } = useContext(UserContext);
@@ -18,8 +20,9 @@ const Landing = () => {
 
       {/* adds banner from the assetss folder */}
       <video className="video-banner" autoPlay muted loop playsInline>
-        <source src="./src/assets/LandingBanner.mp4" type="video/mp4" />
+        <source src={backgroundVideo} type="video/mp4" />
       </video>
+
 
       {/* easy scroll button*/}
       <div className="arrow-down" onClick={handleScroll} aria-label="Scroll to next section">
