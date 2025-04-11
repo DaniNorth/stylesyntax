@@ -10,7 +10,6 @@ const Landing = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   
-  {/* make scroll smoother for better UE */}
   const handleScroll = () => {
     document.getElementById('next-section')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -18,18 +17,14 @@ const Landing = () => {
   return (
     <main className="landing-container">
 
-      {/* adds banner from the assetss folder through import*/}
       <video className="video-banner" autoPlay muted loop playsInline>
         <source src={backgroundVideo} type="video/mp4" />
       </video>
 
-
-      {/* easy scroll button*/}
       <div className="arrow-down" onClick={handleScroll} aria-label="Scroll to next section">
         ▼
       </div>
 
-      {/* Placeholder text build out later */}
       <section id="next-section" className="section">
 
         
@@ -40,7 +35,7 @@ const Landing = () => {
         <div className="landing-logo-container">
           <img src={logo} alt="StyleSyntax Logo" className="landing-logo" />
         </div>
-        {/* Wait for Randall to build out profile and link */}
+        
         {user ? (
           <button className="get-started-btn" onClick={() => navigate('/profile')}>
             Go to Profile
