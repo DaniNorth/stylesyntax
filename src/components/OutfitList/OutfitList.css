@@ -7,7 +7,7 @@
 
 .filter-button-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 2rem;
   margin-top: 1.6rem;
   margin-bottom: .1rem;
@@ -36,4 +36,22 @@
   gap: 2rem;
   padding: 2rem;
   justify-items: center;
+}
+
+.ai-stylist-button {
+  background-color: var(--sage-soft);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+.ai-stylist-button:hover {
+  background-color: var(--sage-muted);
 }

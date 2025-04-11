@@ -1,12 +1,14 @@
 import { useState } from 'react'
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import './OutfitList.css';
 import OutfitCard from '../OutfitCard/OutfitCard';
 import FilterOutfitsModal from '../FilterOutfitsModal/FilterOutfitsModal';
+import AIModal from '../AIModal/AIModal';
 
-const OutfitList = ({ outfits }) => {
+const OutfitList = ({ outfits, userProfile }) => {
   // toggle the slide-out filter modal
   const [showFilter, setShowFilter] = useState(false);
+  const [showAI, setShowAI] = useState(false);
 
   // holds the selected filters from the modal
   const [filters, setFilters] = useState({
@@ -54,6 +56,12 @@ const OutfitList = ({ outfits }) => {
       {/* filter button top-right corner of the page */}
       <div className="filter-button-container">
         <button
+            className="ai-stylist-button"
+            onClick={() => setShowAI(true)}
+          >
+            Ask the AI Stylist
+        </button>
+        <button
           className="open-filter-button"
           onClick={() => setShowFilter(true)}
         >
@@ -69,7 +77,12 @@ const OutfitList = ({ outfits }) => {
           setFilters={setFilters} // gives modal control to update state
         />
       )}
-
+      {showAI && (
+        <AIModal
+          onClose={() => setShowAI(false)}
+          userProfile={userProfile} 
+        />
+      )}
       {/* render outfits — filtered if anything selected */}
       <div className="outfit-list-grid">
         {filteredOutfits.length === 0 ? (
