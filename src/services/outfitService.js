@@ -3,7 +3,7 @@ const BASE_URL =
     ? 'http://localhost:3000/outfits'
     : `${import.meta.env.VITE_BACK_END_SERVER_URL}/outfits`;
 
-/* ========= OUTFITS ========= */
+
 
 // GET all outfits
 const index = async () => {
@@ -82,7 +82,7 @@ const deleteOutfit = async (updatedID) => {
   }
 };
 
-/* ========= COMMENTS ========= */
+
 
 // CREATE a comment on an outfit
 const createComment = async (updatedID, commentFormData) => {

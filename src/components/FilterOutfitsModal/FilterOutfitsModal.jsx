@@ -26,7 +26,7 @@ const FilterOutfitsModal = ({ onClose, filters, setFilters }) => {
     }, 300);
   };
 
-  // Handles checkbox logic for all filter categories
+
   const handleCheckboxChange = (category, value) => {
     setFilters(prev => {
       const current = prev[category];
@@ -40,12 +40,12 @@ const FilterOutfitsModal = ({ onClose, filters, setFilters }) => {
     });
   };
 
-  // Controls accordion toggle behavior
+  
   const toggleSection = (section) => {
     setActiveSection(prev => (prev === section ? null : section));
   };
 
-  //logic for user style prefrence button
+  
   const handleUseQuizResults = () => {
     const stored = localStorage.getItem('quizResults');
     if (stored) {

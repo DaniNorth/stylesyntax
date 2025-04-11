@@ -1,6 +1,6 @@
 # 🧵 StyleSyntax
 
-> **TODO:** Add logo here
+![StyleSyntax Logo](./src/assets/StyleSyntaxLogo.svg)
 
 StyleSyntax is a fashion web app where users can create, curate, and share their personal style by browsing different fashion genres. The app includes a fun quiz that helps users discover their unique fashion style and allows them to explore other users’ profiles, outfits, and inspirations.
 
@@ -21,34 +21,45 @@ StyleSyntax gives you the tools to discover, share, and evolve your fashion iden
 
 ## Getting Started
 
->**TODO:** Here is a link to our deployed app
->**TODO:** Here is a link to our planning materials
->**TODO:** Here is a link to the back-end repo
+>**TODO:** Here is a link to StyleSyntax web app: [StyleSyntax]()
+- [Click here for our planning materials](https://trello.com/invite/b/67ec7325c5a14e24f305c594/ATTI2008f9e5e0bf183d6de6b6c0999f794dFC3124D4/style-syntax-project-board)
+- Here is a link to the back-end repo: [StyleSyntax Backend Repo](https://github.com/DaniNorth/stylesyntax-backend.git)
 
 ## Here are specific details for certain parts of the app:
-Profile Page
-New Outfit Form
-Browse Users
-Style Quiz
+- [Profile Page](./docs/profile-page.md)
+- [Browse Users](./docs/browse-users.md)
+- [Add Outfit Form](./docs/add-outfit.md)
+- [Browse Outfits](./docs/browse-outfits.md)
+- [Style Quiz](./docs/style-quiz.md)
 
 ## Attributions
 
-Here are the links to the 
-Fashion Psychology https://www.scienceofpeople.com/fashion-psychology/
+### Here are resources used to create the app
+
+- [Fashion Psychology](https://www.scienceofpeople.com/fashion-psychology/)
+- [Modal Components with React](https://blog.bitsrc.io/build-a-simple-modal-component-with-react-16decdc111a6)
+- [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ## Technologies Used
 
-Frontend
-React with Vite
-React Router for routing
+### Frontend
+- React with Vite
+- React Router for routing
 
-Backend
-Node
-Express
-MongoDB with Mongoose
-JWT Authentication
+### Backend
+- Node
+- Express
+- MongoDB with Mongoose
+- JWT Authentication
 
-Others
-Cloudinary for image uploads
-Bcrypt
-Canva
+### Others
+- Cloudinary for image uploads
+- Bcrypt
+- Canva
+
+## Future Enhancements
+- Recommend shops based on user style and location
+- Link StyleSyntax profile to user social media
+- AI image generated fashion suggestions
+- Links to fashion industry showcases
