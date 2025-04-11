@@ -13,7 +13,6 @@ const UserProfile = ({ id }) => {
   const [userData, setUserData] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // Determine if the profile belongs to the logged-in user
   const isOwnProfile = !id || id === user._id;
 
   useEffect(() => {
