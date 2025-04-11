@@ -11,7 +11,6 @@ import './index.css';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      {/* Wrap the UserProvider around the App */}
       <UserProvider>
         <App />
       </UserProvider>

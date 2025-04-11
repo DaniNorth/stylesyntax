@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import CommentForm from '../CommentForm/CommentForm';
 import * as outfitService from '../../services/outfitService';
-// import { show } from '../../services/outfitService'; // best way to import
 import { UserContext } from '../../contexts/UserContext';
 import { useParams, Link } from 'react-router';
 import './OutfitDetails.css';

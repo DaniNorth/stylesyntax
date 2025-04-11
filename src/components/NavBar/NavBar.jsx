@@ -4,11 +4,6 @@ import { UserContext } from '../../contexts/UserContext';
 import logo from '../../assets/StyleSyntaxLogo.svg';
 import './NavBar.css'
 
-// import Home from './pages/Home';
-// import StyleQuiz from './pages/StyleQuiz'
-// import Outfits from './pages/Outfits'
-// import Profile from './pages/Profile'
-
 const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -35,7 +30,6 @@ const NavBar = () => {
   </Link>
     </div>
   
-      {/* Navigation links */}
       <ul className="nav-links">
         <li><span onClick={handleHomeClick} className="nav-link">Home</span></li>
         <li><Link to="/quiz">Style Quiz</Link></li>

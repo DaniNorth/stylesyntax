@@ -1,6 +1,3 @@
-// FilterCategoryCard.jsx
-// One card for one filter category – used by FilterOutfitsModal.jsx
-
 import './FilterCategoryCard.css';
 
 const FilterCategoryCard = ({ 
@@ -12,16 +9,15 @@ const FilterCategoryCard = ({
   activeSection,
   setActiveSection 
 }) => {
-  // open if this is the active one
+  
   const isOpen = activeSection === categoryKey;
 
-  // toggle this section open/closed
+ 
   const handleToggle = () => {
     setActiveSection(isOpen ? null : categoryKey);
   };
 
-  // add/remove checkbox values from filters
-  const handleCheckboxChange = (value) => {
+    const handleCheckboxChange = (value) => {
     const current = filters[categoryKey] || [];
     const updatedValues = current.includes(value)
       ? current.filter(item => item !== value)

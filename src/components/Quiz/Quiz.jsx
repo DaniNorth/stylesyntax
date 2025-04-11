@@ -14,8 +14,7 @@ const navigate = useNavigate();
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // Fetch the quiz after gender is selected
-  useEffect(() => {
+    useEffect(() => {
     if (gender) {
       fetchQuestionsByGender(gender);
     }
@@ -27,7 +26,7 @@ const navigate = useNavigate();
       const data = await quizService.getQuestions(selectedGender);
       const questionList = Object.entries(data.questions);
       setQuestions(questionList);
-      setCurrentIndex(1); // Skip q1 since it's already answered to determine gender and which qs to return
+      setCurrentIndex(1); 
     } catch (err) {
       console.error("Failed to load questions:", err);
     } finally {
@@ -84,8 +83,7 @@ const navigate = useNavigate();
     );
   }
 
-  // Loads the rest of the nontagged and genderbased questions. Step 2
-  if (loading || questions.length === 0) {
+    if (loading || questions.length === 0) {
     return <div className="quiz-container">Loading questions...</div>;
   }
 

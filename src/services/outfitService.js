@@ -5,7 +5,6 @@ const BASE_URL =
 
 
 
-// GET all outfits
 const index = async () => {
   try {
     const res = await fetch(BASE_URL, {
@@ -49,7 +48,6 @@ const create = async (outfitFormData) => {
   }
 };
 
-// UPDATE an outfit
 const updateOutfit = async (updatedID, outfitFormData) => {
   try {
     const res = await fetch(`${BASE_URL}/${updatedID}`, {
@@ -67,7 +65,6 @@ const updateOutfit = async (updatedID, outfitFormData) => {
   }
 };
 
-// DELETE an outfit
 const deleteOutfit = async (updatedID) => {
   try {
     const res = await fetch(`${BASE_URL}/${updatedID}`, {
@@ -82,9 +79,6 @@ const deleteOutfit = async (updatedID) => {
   }
 };
 
-
-
-// CREATE a comment on an outfit
 const createComment = async (updatedID, commentFormData) => {
   try {
     const res = await fetch(`${BASE_URL}/${updatedID}/comments`, {
@@ -101,7 +95,6 @@ const createComment = async (updatedID, commentFormData) => {
   }
 };
 
-// UPDATE a comment on an outfit
 const updateComment = async (outfitId, commentId, commentFormData) => {
     try {
       const res = await fetch(`${BASE_URL}/${outfitId}/comments/${commentId}`, {
@@ -118,7 +111,6 @@ const updateComment = async (outfitId, commentId, commentFormData) => {
     }
   };
 
-// DELETE a comment on an outfit
 const deleteComment = async (outfitId, commentId) => {
     try {
       const res = await fetch(`${BASE_URL}/${outfitId}/comments/${commentId}`, {
