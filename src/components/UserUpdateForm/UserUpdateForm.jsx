@@ -21,7 +21,6 @@ const UserUpdateForm = () => {
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
-    console.log(user);
   };
 
   const handleSubmit = async (evt) => {
@@ -30,7 +29,6 @@ const UserUpdateForm = () => {
     try {
       const updatedUser = await userService.updateUser(user._id, formData);
       setUser(updatedUser);
-      console.log("updated username and bio!");
       navigate("/profile")
     } catch (err) {
       console.error(err);
@@ -41,7 +39,6 @@ const UserUpdateForm = () => {
     const fetchUser = async () => {
       const userData = await userService.getUserById(user._id);
       setFormData(userData.user);
-      console.log("in the user effect",userData);
     };
     if (user) fetchUser();
   }, [user]);
