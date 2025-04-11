@@ -21,7 +21,7 @@ StyleSyntax gives you the tools to discover, share, and evolve your fashion iden
 
 ## Getting Started
 
->**TODO:** Here is a link to StyleSyntax web app: [StyleSyntax]()
+- Here is a link to StyleSyntax web app: [StyleSyntax]( https://stylesyntax.netlify.app/)
 - [Click here for our planning materials](https://trello.com/invite/b/67ec7325c5a14e24f305c594/ATTI2008f9e5e0bf183d6de6b6c0999f794dFC3124D4/style-syntax-project-board)
 - Here is a link to the back-end repo: [StyleSyntax Backend Repo](https://github.com/DaniNorth/stylesyntax-backend.git)
 

@@ -133,7 +133,7 @@ const OutfitForm = (props) => {
                 <label htmlFor="styleProfile">Style Profile</label>
                 <select name="styleProfile" id="styleProfile" value={formData.styleProfile} onChange={handleChange}>
                 <option value="">Select one</option>
-                {['Boho', 'Minimalist', 'Grunge', 'Preppy', 'Streetwear', 'Classic', 'Casual', 'Retro', 'Y2K', 'Chic', 'Other'].map(opt => (
+                {['Boho', 'Minimalist', 'Grunge', 'Preppy', 'Streetwear', 'Classic', 'Casual', 'Y2K', 'Chic', 'Avant-Garde', 'Other'].map(opt => (
                     <option key={opt} value={opt}>{opt}</option>
                 ))}
                 </select>
