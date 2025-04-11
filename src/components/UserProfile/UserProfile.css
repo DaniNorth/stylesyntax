@@ -133,6 +133,9 @@
 .folder-section {
   margin-top: 3rem;
   text-align: left;
+  padding: 1rem 0;
+  border-top: 1px solid #ccc;
+  margin-top: 2rem;
 }
 
 .folder-section h3 {
@@ -140,6 +143,10 @@
   color: var(--lavender-deep);
   font-size: 1.4rem;
   padding-left: 1rem;
+}
+
+.folder-section:first-of-type {
+  border-top: none;
 }
 
 .scrolling-folder {
