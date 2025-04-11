@@ -23,7 +23,11 @@ const SignInForm = () => {
     evt.preventDefault();
     try {
       const signedInUser = await signIn(formData);
-      setUser(signedInUser);
+      localStorage.setItem('userId', signedInUser._id);
+
+      const fullUser = await userService.getUserById(signedInUser._id);
+  
+      setUser(fullUser.user);
       navigate('/');
     } catch (err) {
       setMessage(err.message);
