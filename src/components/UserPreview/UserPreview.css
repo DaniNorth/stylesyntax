@@ -32,8 +32,6 @@
   justify-content: center;
 }
 
-
-/* SUPER specific styles to override global button rules */
 .user-preview .preview-button-group .follow-btn {
   background-color: var(--lavender-deep) !important;
   color: white !important;
