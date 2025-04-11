@@ -1,41 +1,35 @@
-
-
 .background-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -1;
-  }
-  
-  .background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-  }
-  
-  .background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
       var(--dusty-pink),
       var(--lavender-muted),
-      var(--sage-soft)
-    );
-    opacity: 0; /* hides gradient background, reveals if mp4 fails */
-    transition: opacity 0.3s ease;
-  }
-  
-  /* display a overlay if the user's browser can't handle a mp4 */
-  .background-video:unavailable + .background-overlay,
-  .background-video[poster] + .background-overlay {
-    opacity: 1;
-  }
-  
+      var(--sage-soft));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.background-video:unavailable+.background-overlay,
+.background-video[poster]+.background-overlay {
+  opacity: 1;
+}

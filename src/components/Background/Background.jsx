@@ -1,7 +1,6 @@
 import './Background.css';
 import backgroundVideo from '../../assets/BackgroundVideo.mp4';
 
-{/* Loops the background video */}
 const Background = () => {
   return (
     <div className="background-container">
