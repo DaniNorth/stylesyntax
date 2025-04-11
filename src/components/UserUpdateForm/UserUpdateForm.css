@@ -1,13 +1,13 @@
-
 .center-button {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.upload-profile-image-button, .delete-user-button {
+.upload-profile-image-button,
+.delete-user-button {
   display: block;
-  margin: 1rem auto; /* centers horizontally */
+  margin: 1rem auto;
   padding: 0.5rem 1rem;
   background-color: var(--lavender-muted);
   color: white;
@@ -25,6 +25,7 @@
   background-color: var(--lavender-deep);
   color: white;
 }
+
 .user-update-wrapper {
   max-width: 1000px;
   margin: 4rem auto;
@@ -46,7 +47,8 @@
   transition: transform 0.3s ease;
 }
 
-.change-photo-button, .delete {
+.change-photo-button,
+.delete {
   position: absolute;
   bottom: 8px;
   right: 8px;
